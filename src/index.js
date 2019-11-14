@@ -14,10 +14,10 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-    <Provider store={}>
+    // <Provider store={}>
         <Router>
             <App />
-        </Router>
-    </Provider>,
+        </Router>,
+    // </Provider>,
     document.getElementById('root'));
 
