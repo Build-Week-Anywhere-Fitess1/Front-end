@@ -16,8 +16,9 @@ function NavBar() {
                     <li><NavLink to="/instructor" activeClassName="activeNavButton">Sensei</NavLink></li>
                     <li><NavLink to="/student" activeClassName="activeNavButton">Grasshopper</NavLink></li>
                     <li><NavLink to="/register" activeClassName="activeNavButton">Sign UP</NavLink></li>
+                    <SearchBar />
                 </ul>
-                <SearchBar />
+                
             </header>
         </div>
     );

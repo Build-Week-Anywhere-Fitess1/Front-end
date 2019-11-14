@@ -42,6 +42,8 @@ function SearchBar(props) {
             onSubmit={() => handleSubmit()}
           />
           <i className="fa fa-search search-icon" />
+            {/* <img className="search-icon" src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Search Icon" /> */}
+
         </label>
       </form>
     </div>
