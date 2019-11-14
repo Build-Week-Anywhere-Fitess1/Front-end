@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../utils/api';
 
 export const FETCH_STUDENT_START = "FETCH_STUDENT_START";
 export const FETCH_STUDENT_SUCCESS = "FETCH_STUDENT_SUCCESS";
@@ -8,7 +8,7 @@ export function fetchStudents() {
     return dispatch => {
         dispatch({type: FETCH_STUDENT_START})
 
-        axios.get(`https://lambda-anywhere-fitness.herokuapp.com/`)
+        api().get(`/api`)
             .then(res => {
                 console.log("Success!", res)
                 dispatch({type: FETCH_STUDENT_SUCCESS, payload: res})
