@@ -11,6 +11,7 @@ import CardsList from "./components/classes/CardsList";
 //END Charlie Added
 
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App(props) {
   // useEffect(() => {
@@ -20,17 +21,19 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        Hello Anytime Fitness!
+        <NavBar />
+
+        <h1> Hello Anytime Fitness!</h1>
+
         <Route exact path="/" component={Signin} />
-<<<<<<< HEAD
-        <ProtectedRoute exact path="dashboard" component={CardsList} />
-=======
+        {/* <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/" component={Home} />
+        <Route path="/instructor" component={Sensei} />
+        <Route path="/student" component={Grasshopper} />
+        <Route path="/signup" component={SignUp} /> */}
 
         <ProtectedRoute exact path="/instructor" component={CardsList} />
-
         <ProtectedRoute exact path="/student" component={CardsList} />
-
->>>>>>> 83652cc9642f894ec222fab665554cd7fa8658ed
         {/* {props.classes.map(item => (
           <div>
             {item.name}
