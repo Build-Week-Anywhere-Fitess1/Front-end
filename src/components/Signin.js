@@ -30,8 +30,21 @@ const Signin = (props) => {
       api()
           .post("/api/auth/login", data)
           .then(res => {
-              
+            
+            console.log(res)
             console.log(res.data.token, 'Token Retrieved From Sign In Component')
+
+            if(res.data.user.roleId == 2){ 
+                
+                console.log("Student")
+
+                props.history.push('/student')
+
+            }else if (res.data.user.roleId == 1) {
+
+                props.history.push('/instructor')
+
+            }
 
               localStorage.setItem('token', res.data.token)
 
@@ -39,7 +52,7 @@ const Signin = (props) => {
                   
                   setIsLoading(false)
                   
-                  props.history.push('/dashboard')
+                  
 
                   }, 3000);
               

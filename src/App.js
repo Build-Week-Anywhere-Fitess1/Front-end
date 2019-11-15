@@ -25,7 +25,9 @@ function App(props) {
 
         <Route exact path="/" component={Signin} />
 
-        <ProtectedRoute exact path="dashboard" component={CardsList} />
+        <ProtectedRoute exact path="/instructor" component={CardsList} />
+
+        <ProtectedRoute exact path="/student" component={CardsList} />
 
         {/* {props.classes.map(item => (
           <div>
