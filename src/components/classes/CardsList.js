@@ -5,18 +5,21 @@ function CardsList(props) {
 
   return (
     <div>
-      {props.cards.map(cards => (
+      
+      <h1>Dashboard - Card List</h1>
+
+      {/* {props.cards.map(cards => (
         <div className="class-card" key={cards.id}>
-          {/* <img
+          <img
             className="class-image"
             src={cards.imageUrl}
             alt={cards.name}
-          /> */}
+          />
           <Link to={`/Cardlist/${cards.id}`}>
             <p>{cards.name}</p>
           </Link>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
