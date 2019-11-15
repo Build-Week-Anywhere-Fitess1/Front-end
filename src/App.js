@@ -16,7 +16,7 @@ function App(props) {
   
   // useEffect(() => {
   //   props.fetchClasses()
-  // }, [])
+  // }, []) //
 
   return (
     <Router>
