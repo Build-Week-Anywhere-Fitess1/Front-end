@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//START Charlie
+import { fetchClasses } from '../../actions/classes';
+import { connect } from 'react-redux';
+//END Charlie
+
+
 function CardsList(props) {
 
   return (
@@ -24,4 +30,22 @@ function CardsList(props) {
   );
 }
 
-export default CardsList;
+const mapStateToProps = state => {
+  return{
+
+      classes: state.classes
+
+  };
+}
+
+
+const mapDispatchToProps = {
+  
+  fetchClasses
+
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CardsList);
