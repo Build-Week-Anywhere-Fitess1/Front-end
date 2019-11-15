@@ -11,7 +11,7 @@ import App from './App';
 
 const rootReducer = combineReducers({
     // student: studentReducer,
-    classes: classesReducer
+    // classes: classesReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

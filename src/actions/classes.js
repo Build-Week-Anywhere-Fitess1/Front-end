@@ -6,6 +6,9 @@ export const FETCH_CLASSES_ERROR = "FETCH_CLASSES_ERROR";
 
 export function fetchClasses() {
     return dispatch => {
+        
+        console.log('da fuq')
+        
         dispatch({type: FETCH_CLASSES_START})
 
         api().get(`/api/category`)
