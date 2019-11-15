@@ -15,14 +15,22 @@ import "./App.css";
 function App(props) {
   // useEffect(() => {
   //   props.fetchClasses()
-  // }, [])
+  // }, []) //
 
   return (
     <Router>
       <div className="App">
         Hello Anytime Fitness!
         <Route exact path="/" component={Signin} />
+<<<<<<< HEAD
         <ProtectedRoute exact path="dashboard" component={CardsList} />
+=======
+
+        <ProtectedRoute exact path="/instructor" component={CardsList} />
+
+        <ProtectedRoute exact path="/student" component={CardsList} />
+
+>>>>>>> 83652cc9642f894ec222fab665554cd7fa8658ed
         {/* {props.classes.map(item => (
           <div>
             {item.name}
