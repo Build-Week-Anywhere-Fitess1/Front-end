@@ -6,10 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { reducer as studentReducer } from "./reducers/student";
+import { reducer as classesReducer } from "./reducers/classes";
 import App from "./App";
 
 const rootReducer = combineReducers({
-  student: studentReducer
+  // student: studentReducer,
+  // classes: classesReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
