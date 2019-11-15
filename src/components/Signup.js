@@ -51,8 +51,8 @@ export default function Signin() {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <button onClick={() => handleRole(1)}>Instructor</button>
-                    <button onClick={() => handleRole(2)}>Student</button>
+                    <button onClick={() => handleRole(1)}>Sensei</button>
+                    <button onClick={() => handleRole(2)}>Grasshopper</button>
                     {instructor === true && <div>Register as an instructor</div>}
                     {instructor === false && <div>Register as a student</div>}
                 </div>
