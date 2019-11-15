@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 
 //START Charlie
 import { fetchClasses } from '../../actions/classes';
 import { connect } from 'react-redux';
+import ClassCard from './ClassCard';
+
 //END Charlie
 
 
-function CardsList(props) {
+const CardsList = props => {
+
+  console.log(props.classes.classes, 'State-Class-List-Component')
+
+  useEffect( () => {
+
+    fetchClasses()
+
+  }, [])
 
   return (
-    <div>
-      
-      <h1>Dashboard - Card List</h1>
+    <>
+      <div>
 
-      {/* {props.cards.map(cards => (
-        <div className="class-card" key={cards.id}>
-          <img
-            className="class-image"
-            src={cards.imageUrl}
-            alt={cards.name}
-          />
-          <Link to={`/Cardlist/${cards.id}`}>
-            <p>{cards.name}</p>
-          </Link>
+        <h1>Dashboard - Card List</h1>
+
+        <div style={{display:'flex', flexDirection:'row', }}>
+          
+          {props.classes.classes.map((item, index) => (
+                      <ClassCard key={index} class_details={item}/>
+                  ))}
         </div>
-      ))} */}
-    </div>
-  );
+
+      </div>
+    </>
+  )
 }
 
 const mapStateToProps = state => {
