@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -14,13 +15,15 @@ const rootReducer = combineReducers({
     classes: classesReducer
 })
 
+
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>,
-    document.getElementById('root'));
-
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+    , //{" "}
+  </Provider>,
+  document.getElementById("root")
+);
