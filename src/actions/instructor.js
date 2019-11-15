@@ -7,7 +7,7 @@ export const FETCH_CLASS_ERROR = 'FETCH_CLASS_ERROR';
 
 
 //fetch images function
-export function fetchImage(){
+export function fetchClasses(){
     return (dispatch) => {
         
         //Set isLoading to True
@@ -15,7 +15,7 @@ export function fetchImage(){
 
         //axios call to API
         api()
-            .get(`/class`, payload-object)
+            .get(`api/classes`)
             .then( res => {
                 //console log result
                 console.log(res, 'Axios-Call-Success')
