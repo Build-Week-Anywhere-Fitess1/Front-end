@@ -13,21 +13,21 @@ function Cards(props) {
     <div className="Cards-wrapper">
       <p>Class Name Here</p>
       <nav>
-        <NavLink to={`/CardList/${Cardlist.id}/description`}>
+        <NavLink to={`/class/${Cardlist.id}/description`}>
           Description
         </NavLink>
 
-        <NavLink to={`/CardList/${Cardlist.id}/pricing`}> 
+        <NavLink to={`/class/${Cardlist.id}/pricing`}> 
         Pricing
         </NavLink>
       </nav>
 
       <Route
-        exact path={`/CardList/${Cardlist.id}/description`}
+        exact path={`/class/${Cardlist.id}/description`}
         render={props => <ClassDescription {...props} Cards={Cards} />}
       />
       <Route
-        exact path={`/CardList/${Cardlist.id}/pricing`}
+        exact path={`/class/${Cardlist.id}/pricing`}
         render={props => <ClassPricing {...props} Cards={Cards} />}
       />
     </div>
