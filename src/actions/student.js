@@ -1,8 +1,8 @@
 import api from '../utils/api';
 
-export const FETCH_STUDENT_START = "FETCH_STUDENT_START";
-export const FETCH_STUDENT_SUCCESS = "FETCH_STUDENT_SUCCESS";
-export const FETCH_STUDENT_ERROR = "FETCH_STUDENT_ERROR";
+export const FETCH_STUDENT_START = "FETCH_STUDENTS_START";
+export const FETCH_STUDENT_SUCCESS = "FETCH_STUDENTS_SUCCESS";
+export const FETCH_STUDENT_ERROR = "FETCH_STUDENTS_ERROR";
 
 export function fetchStudents() {
     return dispatch => {
