@@ -116,3 +116,9 @@ body {
   color: #555;
   right: 18px;
 }
+
+.banner-image {
+  width: 100vw;
+  max-width: 900px;
+  max-height: 275px;
+}

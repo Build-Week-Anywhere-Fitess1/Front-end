@@ -66,3 +66,62 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### =====CANVAS=====
+Proposal
+
+- What problem does your app solve?  Attendance tracker for fitness instructors from anywhere.  
+
+- Be as specific as possible; how does your app solve the problem?
+Instructors lack administrative tools for setting up classes, taking attendance, and receiving payments.  Brings fitness to the clients.  
+
+- What is the mission statement?
+Helping instructors focus on teaching classes rather than their administrative needs on the go.  Fitness the way you want it!
+Features
+
+- What features are required for your minimum viable product?
+Be able to create clients and instructors.  Where instructors will be admins and a calendar with class times, location, etc..  Limit students to each workout.  Create different types of classes.  
+
+- What features may you wish to put in a future release?
+Tracking of attendance for classes/workout measure.
+
+
+- What do the top 3 similar apps do for their users?
+Fitbit, sales.vargaro.com, sweatcoin 
+Frameworks - Libraries
+
+- What 3rd party frameworks/libraries are you considering using?
+Formik, React, Material, Semantic, Google maps, Fitbit api, 
+
+- Do APIs require you to contact its maintainer to gain access?
+Google maps, and fitbit
+
+- Are you required to pay to use the API?
+Google.  
+
+- Have you considered using Apple Frameworks? (MapKit, Healthkit, ARKit?)
+None that would work for this application.
+
+Target Audience
+
+- Who is your target audience? Be specific.
+Anybody who has a desire to work out for people who don't want to be tied down to a gym.
+
+
+- What feedback have you gotten from potential users?  
+Amazing idea for those that need a leader/instructor for workouts.
+
+
+- Have you validated the problem and your solution with your target audience? How?
+
+
+
+Research
+
+- Research thoroughly before writing a single line of code. Solidify the features of your app conceptually before implementation. Spend the weekend researching so you can hit the ground running on Monday.
+Prototype Key Feature(s)
+
+- This is the “bread and butter” of the app, this is what makes your app yours. Calculate how long it takes to implement these features and triple the time estimated. That way you’ll have plenty of time to finish. It is preferred to drop features and spend more time working on your MVP features if needed.
+
+

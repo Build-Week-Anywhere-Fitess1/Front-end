@@ -4,6 +4,7 @@ import "../App.css";
 
 import SearchBar from "./SearchBar";
 
+
 function NavBar() {
 
 
@@ -18,7 +19,6 @@ function NavBar() {
                     <li><NavLink to="/register" activeClassName="activeNavButton">Sign UP</NavLink></li>
                     <SearchBar />
                 </ul>
-                
             </header>
         </div>
     );

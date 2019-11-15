@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import { Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 import NavBar from "./components/NavBar";
+import image from "./pics/Gym-pavement.jpg";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
+      <img className="banner-image" src={image} alt="Gym Pavement" />
 
-      <h1>Hello Anytime Fitness!</h1>
+      {/* <h1>Hello Anytime Fitness!</h1> */}
 
       {/* <Route exact path="/signin" component={SignIn} />
       <Route exact  path="/" component={Home} />
@@ -17,8 +19,6 @@ function App() {
       <Route path="/student" component={Grasshopper} />
       <Route path="/signup" component={SignUp} /> */}
     </div>
-
-
   );
 }
 
