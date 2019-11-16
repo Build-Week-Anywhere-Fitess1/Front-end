@@ -18,7 +18,7 @@ export function fetchClasses() {
             })
             .catch(err => {
                 console.log(err, "my error")
-                dispatch({type: FETCH_CLASSES_ERROR, payload: err})
+                dispatch({type: FETCH_CLASSES_ERROR, payload: err.message})
             })
     }
 }
