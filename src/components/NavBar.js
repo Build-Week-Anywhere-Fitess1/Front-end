@@ -20,6 +20,7 @@ function NavBar() {
                     <SearchBar />
                 </ul>
             </header>
+
         </div>
     );
 }

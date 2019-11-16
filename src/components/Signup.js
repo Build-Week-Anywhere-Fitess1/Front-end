@@ -41,10 +41,10 @@ export default function Signin() {
 
         api().post(`/api/auth/register`, user)
             .then(res => {
-                console.log(res)
+                console.log("Success!", res)
             })
             .catch(err => {
-                console.log(res)
+                console.log(err)
             })
     }
 

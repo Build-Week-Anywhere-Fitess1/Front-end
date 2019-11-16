@@ -4,11 +4,14 @@ import { fetchClasses } from "./actions/classes";
 
 //START Charlie Added
 import Signin from "./components/Signin";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 //Import Protected Route
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
 //END Charlie Added
+import NavBar from './components/NavBar';
+import Signup from './components/Signup';
+
 
 import "./App.css";
 
@@ -18,22 +21,16 @@ function App(props) {
   // }, []) //
 
   return (
-    <Router>
       <div className="App">
-        Hello Anytime Fitness!
+        <NavBar />
         <Route exact path="/" component={Signin} />
 
         <ProtectedRoute exact path="/instructor" component={CardsList} />
-
         <ProtectedRoute exact path="/student" component={CardsList} />
 
-        {/* {props.classes.map(item => (
-          <div>
-            {item.name}
-          </div>
-        ))} */}
+        <Route path="/register" component={Signup} />
+
       </div>
-    </Router>
   );
 }
 
