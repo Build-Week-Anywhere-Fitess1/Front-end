@@ -29,8 +29,10 @@ function App(props) {
       <NavBar />
       <NewClass />
       <Route exact path="/" component={Signin} />
-      <Route path="/sensei" component={InstrDash} />
-      <Route path="/student" component={StuDash} /> ee}
+
+      <Route exact path="/instructor" component={InstrDash} />
+      <Route path="/student" component={StuDash} />
+
       <ProtectedRoute exact path="/instructor" component={CardsList} />
       <ProtectedRoute exact path="/student" component={CardsList} />
       <Route path="/register" component={Signup} />
