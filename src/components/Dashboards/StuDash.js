@@ -9,8 +9,8 @@ import {
   faBookOpen
 } from "@fortawesome/free-solid-svg-icons";
 
-import NavBar from "./NavBar";
-import "./DashMain.css";
+import DashNavBar from "./DashNavBar";
+import "./StuDashStylz.css";
 
 function DashMain() {
   return (
@@ -21,7 +21,7 @@ function DashMain() {
           <input class="header_input" placeholder="Search..." />
         </div>
         <div className="navbar">
-          <NavBar />
+          <DashNavBar />
         </div>
         <div className="header_avatar">{<FontAwesomeIcon icon={faUser} />}</div>
       </header>
