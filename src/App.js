@@ -11,19 +11,19 @@ import CardsList from "./components/classes/CardsList";
 //END Charlie Added
 import NavBar from './components/NavBar';
 import Signup from './components/Signup';
-
+import Home from './components/Home';
 
 import "./App.css";
 
 function App(props) {
-  // useEffect(() => {
-  //   props.fetchClasses()
-  // }, []) //
+  useEffect(() => {
+    props.fetchClasses()
+  }, []) //
 
   return (
       <div className="App">
         <NavBar />
-        <Route exact path="/" component={Signin} />
+        <Route exact path="/" component={Home} />
 
         <ProtectedRoute exact path="/instructor" component={CardsList} />
         <ProtectedRoute exact path="/student" component={CardsList} />
@@ -34,16 +34,16 @@ function App(props) {
   );
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     classes: state.classes.classes
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    classes: state.classes.classes
+  }
+}
 
-// const mapDispatchToProps = {
-//   fetchClasses
-// }
+const mapDispatchToProps = {
+  fetchClasses
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App;
+// export default App;

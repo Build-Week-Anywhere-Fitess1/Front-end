@@ -11,7 +11,7 @@ export function fetchClasses() {
 
         dispatch({type: FETCH_CLASSES_START})
 
-        api().get(`/api/category`)
+        api().get(`/api/classes`)
             .then(res => {
                 console.log("Success!", res)
                 dispatch({type: FETCH_CLASSES_SUCCESS, payload: res})
