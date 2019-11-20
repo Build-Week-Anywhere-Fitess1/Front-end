@@ -1,44 +1,44 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../App.css";
+import "./DashNavStylz.css";
 
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 
-function NavBar() {
+function DashNavBar() {
   return (
     <div className="App">
       <header>
         <ul className="navbar">
-          <li>
+          {/* <li>
             <NavLink exact to="/signin" activeClassName="activeNavButton">
               Sign IN
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink exact to="/home" activeClassName="activeNavButton">
               Home
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/instructor" activeClassName="activeNavButton">
               Sensei
             </NavLink>
-          </li>
+          </li> */}
           <li>
-            <NavLink to="/student" activeClassName="activeNavButton">
-              Grasshopper
+            <NavLink to="/classes" activeClassName="activeNavButton">
+              Classes
             </NavLink>
           </li>
           <li>
-            <NavLink to="/register" activeClassName="activeNavButton">
-              Sign UP
+            <NavLink to="/logOff" activeClassName="activeNavButton">
+              Log Out
             </NavLink>
           </li>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </ul>
       </header>
     </div>
   );
 }
 
-export default NavBar;
+export default DashNavBar;

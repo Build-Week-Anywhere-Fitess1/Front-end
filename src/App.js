@@ -9,11 +9,12 @@ import { Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
 //END Charlie Added
-import NavBar from './components/NavBar';
-import Signup from './components/Signup';
-import NewClass from './components/NewClass';
+import NavBar from "./components/NavBar";
+import Signup from "./components/Signup";
+import NewClass from "./components/NewClass";
 
-
+import InstrDash from "./components/Dashboards/InstrDash";
+import StuDash from "./components/Dashboards/StuDash";
 import "./App.css";
 
 function App(props) {
@@ -24,22 +25,20 @@ function App(props) {
   // }, []) //
 
   return (
-      <div className="App">
-        <NavBar />
+    <div className="App">
+      <NavBar />
+      <NewClass />
+      <Route exact path="/" component={Signin} />
 
-        <NewClass />
+      <Route exact path="/instructor" component={InstrDash} />
+      <Route path="/student" component={StuDash} />
 
-        <Route exact path="/" component={Signin} />
-
-        <ProtectedRoute exact path="/instructor" component={CardsList} />
-        <ProtectedRoute exact path="/student" component={CardsList} />
-
-        <Route path="/register" component={Signup} />
-
-        {/* {roleId === 1 && <InstructorCards />} */}
-        {/* {roleId === 2 && <StudentCards />} */}
-
-      </div>
+      <ProtectedRoute exact path="/instructor" component={CardsList} />
+      <ProtectedRoute exact path="/student" component={CardsList} />
+      <Route path="/register" component={Signup} />
+      {/* {roleId === 1 && <InstructorCards />} */}
+      {/* {roleId === 2 && <StudentCards />} */}
+    </div>
   );
 }
 
