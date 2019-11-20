@@ -29,8 +29,8 @@ function App(props) {
         {/* <Route exact path="/signin" component={SignIn} />
         <Route exact path="/" component={Home} />
         <Route path="/instructor" component={Sensei} />
-        <Route path="/student" component={Grasshopper} />
-        <Route path="/signup" component={SignUp} /> */}
+        {/* <Route path="/student" component={Grasshopper} /> */}
+        {/* <Route path="/signup" component={SignUp} /> */}
 
         <ProtectedRoute exact path="/instructor" component={CardsList} />
         <ProtectedRoute exact path="/student" component={CardsList} />
