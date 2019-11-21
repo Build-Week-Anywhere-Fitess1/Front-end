@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 //Import Protected Route
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
+import Home from "./components/Home";
 //END Charlie Added
 import NavBar from "./components/NavBar";
 import Signup from "./components/Signup";
@@ -18,7 +19,12 @@ import StuDash from "./components/Dashboards/StuDash";
 import "./App.css";
 
 function App(props) {
+  
   const roleId = localStorage.getItem("roleId");
+
+  const [login, setLogin] = useState(0)
+
+  const [signup, setSignup] = useState(0)
 
   // useEffect(() => {
   //   props.fetchClasses()
@@ -28,7 +34,7 @@ function App(props) {
     <div className="App">
       <NavBar />
       <NewClass />
-      <Route exact path="/" component={Signin} />
+      <Route exact path="/" component={Home} />
 
       <Route exact path="/instructor" component={InstrDash} />
       <Route path="/student" component={StuDash} />
@@ -42,16 +48,16 @@ function App(props) {
   );
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     classes: state.classes.classes
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    classes: state.classes.classes
+  }
+}
 
-// const mapDispatchToProps = {
-//   fetchClasses
-// }
+const mapDispatchToProps = {
+  fetchClasses
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App;
+// export default App;

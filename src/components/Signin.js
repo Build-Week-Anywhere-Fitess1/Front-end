@@ -38,15 +38,30 @@ const Signin = (props) => {
                 
                 console.log("Student")
 
+                //Set Token in Local Storage
+                localStorage.setItem('token', res.data.token)
+
+                //Set Username in Local Storage
+                localStorage.setItem('username', res.data.user.username)
+  
+                    console.log(localStorage.getItem('username'), 'Get Storage Username')
+
                 props.history.push('/student')
 
             }else if (res.data.user.roleId == 1) {
+
+                //Set Token in Local Storage
+                localStorage.setItem('token', res.data.token)
+
+                //Set Username in Local Storage
+                localStorage.setItem('username', res.data.user.username)
+  
+                    console.log(localStorage.getItem('username'), 'Get Storage Username')
 
                 props.history.push('/instructor')
 
             }
 
-              localStorage.setItem('token', res.data.token)
 
               setTimeout(function(){ 
                   

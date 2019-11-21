@@ -14,11 +14,15 @@ const CardsList = props => {
 
   console.log(props.classes.classes, 'State-Class-List-Component')
 
+  fetchClasses()
+  
   useEffect( () => {
 
     fetchClasses()
 
   }, [])
+
+  console.log(props.classes.classes, 'after fetch')
 
   return (
     <>
