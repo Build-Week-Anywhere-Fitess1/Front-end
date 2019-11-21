@@ -11,11 +11,11 @@ export const POST_CLASSES_ERROR = "POST_CLASSES_ERROR";
 export function fetchClasses() {
     return dispatch => {
         
-        console.log('da fuq')
-        
+        console.log('fetchClasses')
+
         dispatch({type: FETCH_CLASSES_START})
 
-        api().get(`/api/category`)
+        api().get(`/api/classes`)
             .then(res => {
                 console.log("Success!", res)
                 dispatch({type: FETCH_CLASSES_SUCCESS, payload: res})

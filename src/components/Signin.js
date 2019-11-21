@@ -32,28 +32,62 @@ const Signin = props => {
 
     api()
       .post("/api/auth/login", data)
-      .then(res => {
-        console.log(res);
-        console.log(res.data.token, "Token Retrieved From Sign In Component");
+      .then(
+        res => {
+          console.log(res);
+          console.log(res.data.token, "Token Retrieved From Sign In Component");
 
-        if (res.data.user.roleId == 2) {
-          console.log("Student");
+          if (res.data.user.roleId == 2) {
+            console.log("Student");
 
-          props.history.push("/student");
-        } else if (res.data.user.roleId == 1) {
-          props.history.push("/instructor");
+            //Set Token in Local Storage
+            localStorage.setItem("token", res.data.token);
+
+            //Set Username in Local Storage
+            localStorage.setItem("username", res.data.user.username);
+
+            console.log(
+              localStorage.getItem("username"),
+              "Get Storage Username"
+            );
+
+            props.history.push("/student");
+          } else if (res.data.user.roleId == 1) {
+            //Set Token in Local Storage
+            localStorage.setItem("token", res.data.token);
+
+            //Set Username in Local Storage
+            localStorage.setItem("username", res.data.user.username);
+
+            console.log(
+              localStorage.getItem("username"),
+              "Get Storage Username"
+            );
+
+            props.history.push("/instructor");
+
+            setIsLoading(true);
+
+            if (res.data.user.roleId == 2) {
+              console.log("Student");
+
+              props.history.push("/student");
+            } else if (res.data.user.roleId == 1) {
+              props.history.push("/instructor");
+            }
+
+            localStorage.setItem("token", res.data.token);
+
+            setTimeout(function() {
+              setIsLoading(false);
+            }, 3000);
+          }
         }
-
-        localStorage.setItem("token", res.data.token);
-
-        setTimeout(function() {
-          setIsLoading(false);
-        }, 3000);
-      })
-      .catch(err => {
-        // setError(err.response.data.message)
-        console.log(err);
-      });
+        // .catch(err => {
+        //     // setError(err.response.data.message)
+        //     console.log(err);
+        //   });
+      );
   };
 
   return (
