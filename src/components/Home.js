@@ -1,81 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Signup from './Signup';
 import Signin from './Signin';
 
+import { Route } from "react-router-dom";
+
 import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles({
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    form: {
-        width: '50%',
-        height: '450px',
-        margin: '30px auto',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'darkgray',
-        borderRadius: '10px',
-        boxShadow: '0px 0px 15px black'
-    },
-    inputFields: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '0 auto'
-    },
-    button: {
-        width: '150px',
-        height: '50px',
-        marginTop: '20px',
-        color: 'white',
-        backgroundColor: 'green',
-        border: '2px solid black',
-        boxShadow: '4px 4px 3px black',
-        borderRadius: '7px'
-    },
-    senseiBtn: {
-        width: '125px',
-        height: '45px',
-        color: 'white',
-        backgroundColor: '#218BCC',
-        margin: '5px',
-        border: '2px solid black',
-        borderRadius: '7px',
-        boxShadow: '4px 4px 3px black'
-    },
-    grasshopperBtn: {
-        width: '125px',
-        height: '45px',
-        color: 'black',
-        backgroundColor: '#AEEA4F',
-        margin: '5px',
-        border: '2px solid black',
-        borderRadius: '7px',
-        boxShadow: '4px 4px 3px black'
-    },
-    sensei: {
-        color: '#218BCC',
-        textTransform: 'uppercase',
-        fontWeight: 'bold'
-    },
-    grasshopper: {
-        color: '#AEEA4F',
-        textTransform: 'uppercase',
-        fontWeight: 'bold'
-    },
-    label: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '350px',
-        margin: '8px auto'
-    },
-})
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+        button: {
+          margin: theme.spacing(1),
+        },
+        formControl: {
+            margin: theme.spacing(3),
+        },
+    }
+))
 
 
 const Home = (props) =>{
+
+//Holds User Type From Radio Button
+const [userType, setUserType] = useState('grasshopper')
+
+//Holds Visit Type (i.e. if user wants to login or signup)
+const [visitType, setVisitType] = useState('grasshopper')
+
+//Holds Login Radio Change
+const [login, setLogin] = useState(0)
+
+//Holds Signup Radio Change
+const [signup, setSignup] = useState(0)
 
 //CSS Styling for Buttons via Material.ui    
 const classes = useStyles()
@@ -87,7 +50,11 @@ const handleClick = () => {
 
     }
 
-
+//Handles Radio Button Change
+const handleVisitChange = e => {
+    
+    setVisitType(e.target.value);
+  }
 
 return(
     <>
@@ -95,10 +62,35 @@ return(
         <h1>Workout the Way YOU Want to</h1>
 
         <h3>The Most Amazing Workout Platform in the World</h3>
-        <div>
-            <button type="button" className={classes.senseiBtn} onClick={() => handleClick()}>Login/Register</button>
+        
+        <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+
+        <h4 style={{color:'red'}}>Login or Signup?</h4>
+        <FormControl component="fieldset" className={classes.formControl}>
+            {/* <FormLabel component="legend">Login or Signup?</FormLabel> */}
+            <RadioGroup aria-label="Login or Signup?" name="visitType" value={visitType} onChange={handleVisitChange}>
+                <FormControlLabel value="login" control={<Radio />} label="Login" />
+                <FormControlLabel value="signup" control={<Radio />} label="Signup" />
+            </RadioGroup>
+        </FormControl>
+
+        {/* <FormControl component="fieldset" className={classes.formControl}>
+            <FormLabel component="legend">Sign In As:</FormLabel>
+            <RadioGroup aria-label="User Type" name="userType" value={userType} onChange={handleChange}>
+                <FormControlLabel value="grasshopper" control={<Radio />} label="Grasshopper" />
+                <FormControlLabel value="sensei" control={<Radio />} label="Sensei" />
+            </RadioGroup>
+        </FormControl> */}
+        
+
+            {/* <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick()}>Login/Register</Button> */}
             
         </div>
+
+        {visitType === 'signup' && <Route render={ props => <Signup history={props.history} /> } />}
+
+        {visitType === 'login' && <Route render={ props => <Signin history={props.history} /> } />}
+        
 
         
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchClasses } from "./actions/classes";
 
@@ -12,23 +12,42 @@ import CardsList from "./components/classes/CardsList";
 import NavBar from './components/NavBar';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import NewClass from './components/NewClass';
+
 
 import "./App.css";
 
 function App(props) {
-  useEffect(() => {
-    props.fetchClasses()
-  }, []) //
+  
+  const roleId = localStorage.getItem("roleId");
+
+  const [login, setLogin] = useState(0)
+
+  const [signup, setSignup] = useState(0)
+
+  // useEffect(() => {
+  //   props.fetchClasses()
+  // }, []) //
 
   return (
       <div className="App">
         <NavBar />
+
+        {/* <NewClass /> */}
+
+        
+
         <Route exact path="/" component={Home} />
+
+        
 
         <ProtectedRoute exact path="/instructor" component={CardsList} />
         <ProtectedRoute exact path="/student" component={CardsList} />
 
         <Route path="/register" component={Signup} />
+
+        {/* {roleId === 1 && <InstructorCards />} */}
+        {/* {roleId === 2 && <StudentCards />} */}
 
       </div>
   );
