@@ -29,10 +29,11 @@ function App(props) {
     <div className="App">
       {/* <NavBar /> */}
       {/* <NewClass /> */}
+      <Link to="/instructor/:id"></Link>
 
-      <Route path="/" component={Home} />
-      <Route path="/instructor" component={InstrDash} />
-      <Route path="/student" component={StuDash} />
+      <Route exact path="/" component={Home} />
+      <Route path="/instructor/:id" component={InstrDash} />
+      <Route path="/student/:id" component={StuDash} />
 
       {/* <ProtectedRoute exact path="/instructor" component={CardsList} />
       <ProtectedRoute exact path="/student" component={CardsList} /> */}

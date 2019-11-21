@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../utils/api";
 
 import InstrDash from "./Dashboards/InstrDash";
+import StuDash from "./Dashboards/StuDash";
 
 const Signin = props => {
   // make a post request to retrieve a token from the api
