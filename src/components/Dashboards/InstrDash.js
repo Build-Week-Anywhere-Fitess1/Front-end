@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DashNavBar from "./DashNavBar";
+import "./DashNavStylz.css";
 import "./InstrDashStylz.css";
 
 function DashMain() {
