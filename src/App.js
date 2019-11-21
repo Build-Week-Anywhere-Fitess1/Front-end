@@ -36,7 +36,7 @@ function App(props) {
 
       <Route exact path="/" component={Home} />
       <Route exact path="/instructor/:id" component={InstrDash} />
-      <Route path="/student/:id" component={StuDash} />
+      <Route exact path="/student/:id" component={StuDash} />
       <Route path="/classes" component={NewClass} />
 
       {/* <ProtectedRoute exact path="/instructor" component={CardsList} />
