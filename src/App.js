@@ -11,8 +11,7 @@ import CardsList from "./components/classes/CardsList";
 //END Charlie Added
 import NavBar from './components/NavBar';
 import Signup from './components/Signup';
-import NewClass from './components/NewClass';
-
+import BreadCrubmsList from './components/student/BreadCrumbsList';
 
 import "./App.css";
 
@@ -27,12 +26,13 @@ function App(props) {
       <div className="App">
         <NavBar />
 
-        <NewClass />
+        <BreadCrubmsList />
 
-        <Route exact path="/" component={Signin} />
+        {/*======ROUTES======}*/}
+        <Route exact path="/signin" component={Signin} />
 
-        <ProtectedRoute exact path="/instructor" component={CardsList} />
-        <ProtectedRoute exact path="/student" component={CardsList} />
+        {/* <ProtectedRoute exact path="/instructor" component={CardsList} /> */}
+        {/* <ProtectedRoute exact path="/student" component={CardsList} /> */}
 
         <Route path="/register" component={Signup} />
 
