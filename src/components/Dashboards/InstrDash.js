@@ -18,7 +18,7 @@ function DashMain() {
     <div className="grid-container">
       <header className="header">
         <div className="header_search">
-          <input class="header_input" placeholder="Search..." />
+          <input className="header_input" placeholder="Search..." />
         </div>
         <div className="navbar">
           <DashNavBar />
@@ -32,18 +32,18 @@ function DashMain() {
         <div className="sidenav__brand">
           <FontAwesomeIcon icon={faDumbbell} className="sidenav_icon" />
           <NavLink to="/" className="sidenav__brand-link">
-            Anywhere <span class="text-light">Fitness</span>
+            Anywhere <span className="text-light">Fitness</span>
           </NavLink>
         </div>
 
-        <div class="sidenav__profile">
-          <div class="sidenav__profile-avatar">
+        <div className="sidenav__profile">
+          <div className="sidenav__profile-avatar">
             {<FontAwesomeIcon icon={faUser} />}
           </div>
-          <div class="sidenav__profile-title text-light">User Name</div>
+          <div className="sidenav__profile-title text-light">User Name</div>
         </div>
 
-        <div class="row row--align-v-center row--align-h-center">
+        <div className="row row--align-v-center row--align-h-center">
           <ul className="navList">
             <li className="navList__heading">
               Messages {<FontAwesomeIcon icon={faEnvelope} />}
@@ -76,13 +76,13 @@ function DashMain() {
       {/* set styling for main section */}
 
       <main className="main">
-        <div className="main-header">
+        <div className="main-header-section">
           <div className="main-header__intro-wrapper">
             <div className="main-header__welcome">
-              <div class="main-header__welcome-title text-light">
+              <div className="main-header__welcome-title text-light">
                 Welcome, <strong>User</strong>
               </div>
-              <div class="main-header__welcome-subtitle text-light">
+              <div className="main-header__welcome-subtitle text-light">
                 Where are you working out today?
               </div>
             </div>

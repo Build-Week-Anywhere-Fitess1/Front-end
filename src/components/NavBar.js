@@ -10,7 +10,7 @@ function NavBar() {
       <header>
         <ul className="navbar">
           <li>
-            <NavLink exact to="/signin" activeClassName="activeNavButton">
+            <NavLink exact to="/" activeClassName="activeNavButton">
               Sign IN
             </NavLink>
           </li>
@@ -20,17 +20,17 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/instructor" activeClassName="activeNavButton">
+            <NavLink to="/instructor/:id" activeClassName="activeNavButton">
               Sensei
             </NavLink>
           </li>
           <li>
-            <NavLink to="/student" activeClassName="activeNavButton">
+            <NavLink to="/student/:id" activeClassName="activeNavButton">
               Grasshopper
             </NavLink>
           </li>
           <li>
-            <NavLink to="/register" activeClassName="activeNavButton">
+            <NavLink to="/" activeClassName="activeNavButton">
               Sign UP
             </NavLink>
           </li>

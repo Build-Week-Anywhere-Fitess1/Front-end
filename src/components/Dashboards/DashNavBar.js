@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 import "./DashNavStylz.css";
 
 // import SearchBar from "./SearchBar";
@@ -15,7 +16,7 @@ function DashNavBar() {
             </NavLink>
           </li> */}
           <li>
-            <NavLink exact to="/home" activeClassName="activeNavButton">
+            <NavLink exact to="/" activeClassName="activeNavButton">
               Home
             </NavLink>
           </li>

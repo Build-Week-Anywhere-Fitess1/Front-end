@@ -4,7 +4,7 @@ import { fetchClasses } from "./actions/classes";
 
 //START Charlie Added
 import Signin from "./components/Signin";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 //Import Protected Route
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
@@ -19,12 +19,11 @@ import StuDash from "./components/Dashboards/StuDash";
 import "./App.css";
 
 function App(props) {
-  
   const roleId = localStorage.getItem("roleId");
 
-  const [login, setLogin] = useState(0)
+  const [login, setLogin] = useState(0);
 
-  const [signup, setSignup] = useState(0)
+  const [signup, setSignup] = useState(0);
 
   // useEffect(() => {
   //   props.fetchClasses()
@@ -32,16 +31,17 @@ function App(props) {
 
   return (
     <div className="App">
-      <NavBar />
-      <NewClass />
+      {/* <NavBar /> */}
+      {/* <NewClass /> */}
+
       <Route exact path="/" component={Home} />
+      <Route exact path="/instructor/:id" component={InstrDash} />
+      <Route exact path="/student/:id" component={StuDash} />
+      <Route path="/classes" component={NewClass} />
 
-      <Route exact path="/instructor" component={InstrDash} />
-      <Route path="/student" component={StuDash} />
+      {/* <ProtectedRoute exact path="/instructor" component={CardsList} />
+      <ProtectedRoute exact path="/student" component={CardsList} /> */}
 
-      <ProtectedRoute exact path="/instructor" component={CardsList} />
-      <ProtectedRoute exact path="/student" component={CardsList} />
-      <Route path="/register" component={Signup} />
       {/* {roleId === 1 && <InstructorCards />} */}
       {/* {roleId === 2 && <StudentCards />} */}
     </div>
@@ -51,12 +51,12 @@ function App(props) {
 const mapStateToProps = state => {
   return {
     classes: state.classes.classes
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   fetchClasses
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
