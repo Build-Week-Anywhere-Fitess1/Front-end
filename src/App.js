@@ -31,13 +31,13 @@ function App(props) {
 
   return (
     <div className="App">
-      <NavBar />
-      <NewClass />
-      <Route exact path="/" component={Home} />
+      {/* <NavBar /> */}
+      {/* <NewClass /> */}
 
       <Route exact path="/" component={Home} />
-      <Route path="/instructor/:id" component={InstrDash} />
+      <Route exact path="/instructor/:id" component={InstrDash} />
       <Route path="/student/:id" component={StuDash} />
+      <Route path="/classes" component={NewClass} />
 
       {/* <ProtectedRoute exact path="/instructor" component={CardsList} />
       <ProtectedRoute exact path="/student" component={CardsList} /> */}
