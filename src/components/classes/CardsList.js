@@ -1,24 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import api from '../../utils/api';
 
 
 //START Charlie
 import { fetchClasses } from '../../actions/classes';
-import { connect } from 'react-redux';
 import ClassCard from './ClassCard';
-
 //END Charlie
-
 
 const CardsList = props => {
 
-  console.log(props.classes.classes, 'State-Class-List-Component')
+  const [userClasses, setUserClasses] = useState([])
 
+  useEffect(() => {
+    api().get(`/api/user/classes`)
+      .then(res => {
+        setUserClasses(res.data)
+      })
+      .catch(err => console.log(err))
+  })
+
+  fetchClasses()
+  
   useEffect( () => {
 
     fetchClasses()
 
   }, [])
+
+  console.log(userClasses, 'after fetch')
 
   return (
     <>
@@ -28,7 +38,7 @@ const CardsList = props => {
 
         <div style={{display:'flex', flexDirection:'row', }}>
           
-          {props.classes.classes.map((item, index) => (
+          {userClasses.map((item, index) => (
                       <ClassCard key={index} class_details={item}/>
                   ))}
         </div>
@@ -38,22 +48,4 @@ const CardsList = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return{
-
-      classes: state.classes
-
-  };
-}
-
-
-const mapDispatchToProps = {
-  
-  fetchClasses
-
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CardsList);
+export default CardsList;
