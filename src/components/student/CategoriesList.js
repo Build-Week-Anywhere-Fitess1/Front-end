@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import { Route } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
 import api from '../../utils/api';
 import Category from './Category';
 import ClassesList from './ClassesList';
+
 
 export default function CategoriesList() {
     const [category, setCategory] = useState([])

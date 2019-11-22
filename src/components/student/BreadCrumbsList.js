@@ -1,12 +1,22 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
 
 import CategoriesList from './CategoriesList';
 import ClassesList from './ClassesList';
 
+const useStyles = makeStyles({
+  container: {
+      display: 'flex',
+      justifyContent: 'space-around'
+  }
+})
+
 export default function BreadCrumbsList() {
+  const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.container}>
       <CategoriesList />
 
     </div>

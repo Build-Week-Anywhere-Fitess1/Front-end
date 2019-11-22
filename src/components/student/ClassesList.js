@@ -3,11 +3,10 @@ import api from '../../utils/api';
 import Class from './Class';
 
 export default function ClassesList(props) {
-    const user = localStorage.getItem("username");
     const [userClasses, setUserClasses] = useState([])
 
     useEffect(() => {
-        api().get(`/api/user/classes`)
+        api().get(`/api/classes`)
             .then(res => {
                 setUserClasses(res.data)
             })
@@ -19,7 +18,7 @@ export default function ClassesList(props) {
     return (
         <div>
             {userClasses.map(classes => (
-                <Class classes={classes}/>
+                <Class key={classes.id} classes={classes}/>
             ))}
         </div>
     )
