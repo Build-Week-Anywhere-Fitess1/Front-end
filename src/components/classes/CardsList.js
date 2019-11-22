@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
 
-
 //START Charlie
 import { fetchClasses } from '../../actions/classes';
 import ClassCard from './ClassCard';
 //END Charlie
 
 const CardsList = props => {
+  console.log(props.classes.classes, "State-Class-List-Component");
 
   const [userClasses, setUserClasses] = useState([])
 
@@ -24,7 +24,9 @@ const CardsList = props => {
   
   useEffect( () => {
 
-    fetchClasses()
+  useEffect(() => {
+    fetchClasses();
+  }, []);
 
   }, [])
 
@@ -33,6 +35,7 @@ const CardsList = props => {
   return (
     <>
       <div>
+        <h1>Your Classes</h1>
 
         <h1>Dashboard - Card List</h1>
 
@@ -42,10 +45,9 @@ const CardsList = props => {
                       <ClassCard key={index} class_details={item}/>
                   ))}
         </div>
-
       </div>
     </>
-  )
-}
+  );
+};
 
 export default CardsList;
