@@ -8,7 +8,6 @@ import ClassCard from './ClassCard';
 //END Charlie
 
 const CardsList = props => {
-  console.log(props.classes.classes, "State-Class-List-Component");
 
   const [userClasses, setUserClasses] = useState([])
 
@@ -18,19 +17,9 @@ const CardsList = props => {
         setUserClasses(res.data)
       })
       .catch(err => console.log(err))
-  })
-
-  fetchClasses()
-  
-  useEffect( () => {
-
-  useEffect(() => {
-    fetchClasses();
-  }, []);
-
   }, [])
 
-  console.log(userClasses, 'after fetch')
+  // console.log(userClasses, 'after fetch')
 
   return (
     <>

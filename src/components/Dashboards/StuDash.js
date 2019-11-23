@@ -12,6 +12,8 @@ import {
 import DashNavBar from "./DashNavBar";
 import CardsList from '../classes/CardsList';
 import "./StuDashStylz.css";
+import BreadCrumbsList from "../student/BreadCrumbsList";
+
 
 function DashMain() {
   return (
@@ -95,11 +97,8 @@ function DashMain() {
 
         <CardsList />
 
-        <div className="main-cards">
-          <div className="card">Card 1</div>
-          <div className="card">Card 2</div>
-          <div className="card">Card 3</div>
-        </div>
+        <BreadCrumbsList />
+        
       </main>
 
       {/* styling for footer */}

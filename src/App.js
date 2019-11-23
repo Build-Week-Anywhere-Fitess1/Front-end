@@ -26,12 +26,12 @@ function App(props) {
 
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar /> */}
       {/* <NewClass /> */}
 
       <Route exact path="/" component={Home} />
-      <Route exact path="/instructor/:id" component={InstrDash} />
-      <Route exact path="/student/:id" component={StuDash} />
+      <Route exact path="/instructor/" component={InstrDash} />
+      <Route exact path="/student/" component={StuDash} />
       <Route path="/classes" component={NewClass} />
 
       {/* <ProtectedRoute exact path="/instructor" component={CardsList} />

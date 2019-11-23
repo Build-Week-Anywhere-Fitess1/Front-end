@@ -9,6 +9,7 @@ export default function ClassesList(props) {
         api().get(`/api/classes`)
             .then(res => {
                 setUserClasses(res.data)
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
