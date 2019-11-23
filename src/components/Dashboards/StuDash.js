@@ -10,8 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DashNavBar from "./DashNavBar";
-import CardsList from "../classes/CardsList";
+import CardsList from '../classes/CardsList';
 import "./StuDashStylz.css";
+import BreadCrumbsList from "../student/BreadCrumbsList";
+
 
 function DashMain() {
   return (
@@ -92,31 +94,11 @@ function DashMain() {
 
         {/* styling for main cards */}
         {/* Render class card components HERE */}
-        <CardsList />
-        {/* <div className="main-overview">
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-        </div> */}
 
-        <div className="main-cards">
-          <div className="card">Card 1</div>
-          <div className="card">Card 2</div>
-          <div className="card">Card 3</div>
-        </div>
+        <CardsList />
+
+        <BreadCrumbsList />
+        
       </main>
 
       {/* styling for footer */}

@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchClasses } from "./actions/classes";
 
-//START Charlie Added
 import Signin from "./components/Signin";
 import { Route, Link } from "react-router-dom";
 //Import Protected Route
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
 import Home from "./components/Home";
-//END Charlie Added
+import BreadCrubmsList from './components/student/BreadCrumbsList';
 import NavBar from "./components/NavBar";
 import Signup from "./components/Signup";
 import NewClass from "./components/NewClass";
@@ -25,18 +24,14 @@ function App(props) {
 
   const [signup, setSignup] = useState(0);
 
-  // useEffect(() => {
-  //   props.fetchClasses()
-  // }, []) //
-
   return (
     <div className="App">
       {/* <NavBar /> */}
       {/* <NewClass /> */}
 
       <Route exact path="/" component={Home} />
-      <Route exact path="/instructor/:id" component={InstrDash} />
-      <Route exact path="/student/:id" component={StuDash} />
+      <Route exact path="/instructor/" component={InstrDash} />
+      <Route exact path="/student/" component={StuDash} />
       <Route path="/classes" component={NewClass} />
 
       {/* <ProtectedRoute exact path="/instructor" component={CardsList} />

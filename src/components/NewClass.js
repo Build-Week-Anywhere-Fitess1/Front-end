@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { postClass } from "../actions/classes";
-import NavBar from "./NavBar";
 
 function NewClass(props) {
   const [myClass, setMyClass] = useState({
@@ -29,8 +28,6 @@ function NewClass(props) {
 
   return (
     <div>
-      <NavBar />
-
       <h2>Create a new class!</h2>
       <form onSubmit={handleSubmit}>
         <label>
