@@ -115,9 +115,9 @@ function InstrDash() {
         </div> */}
 
         <div className="main-cards">
-          <div className="card">Card 1</div>
-          <div className="card">Card 2</div>
-          <div className="card">Card 3</div>
+          <div className="card">Social Feed</div>
+          <div className="card">Event Notification Card</div>
+          <div className="card">Suggested Classes</div>
         </div>
       </main>
 
