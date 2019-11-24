@@ -10,12 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DashNavBar from "./DashNavBar";
-import CardsList from '../classes/CardsList';
+import CardsList from "../classes/CardsList";
 import "./StuDashStylz.css";
 import BreadCrumbsList from "../student/BreadCrumbsList";
 
-
-function DashMain() {
+function StuDash() {
   return (
     // Set CSS grid container
     <div className="grid-container">
@@ -98,7 +97,6 @@ function DashMain() {
         <CardsList />
 
         <BreadCrumbsList />
-        
       </main>
 
       {/* styling for footer */}
@@ -110,4 +108,4 @@ function DashMain() {
   );
 }
 
-export default DashMain;
+export default StuDash;

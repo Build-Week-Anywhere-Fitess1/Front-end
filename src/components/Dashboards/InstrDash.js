@@ -13,7 +13,7 @@ import DashNavBar from "./DashNavBar";
 import CardsList from "../classes/CardsList";
 import "./InstrDashStylz.css";
 
-function DashMain() {
+function InstrDash() {
   return (
     // Set CSS grid container
     <div className="grid-container">
@@ -130,4 +130,4 @@ function DashMain() {
   );
 }
 
-export default DashMain;
+export default InstrDash;

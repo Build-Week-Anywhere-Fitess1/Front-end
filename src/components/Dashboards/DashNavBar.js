@@ -31,7 +31,7 @@ function DashNavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/logOff" activeClassName="activeNavButton">
+            <NavLink exact to="/" activeClassName="activeNavButton">
               Log Out
             </NavLink>
           </li>
