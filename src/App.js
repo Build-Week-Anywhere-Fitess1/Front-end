@@ -8,8 +8,7 @@ import { Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CardsList from "./components/classes/CardsList";
 import Home from "./components/Home";
-import BreadCrubmsList from './components/student/BreadCrumbsList';
-import NavBar from "./components/NavBar";
+import BreadCrubmsList from "./components/student/BreadCrumbsList";
 import Signup from "./components/Signup";
 import NewClass from "./components/NewClass";
 
@@ -26,19 +25,18 @@ function App(props) {
 
   return (
     <div className="App">
-      {/* <NavBar /> */}
       {/* <NewClass /> */}
 
       <Route exact path="/" component={Home} />
       <Route exact path="/instructor/" component={InstrDash} />
       <Route exact path="/student/" component={StuDash} />
-      <Route path="/classes" component={NewClass} />
+      <Route path="/instructor/classes" component={NewClass} />
 
-      {/* <ProtectedRoute exact path="/instructor" component={CardsList} />
-      <ProtectedRoute exact path="/student" component={CardsList} /> */}
+      <ProtectedRoute exact path="/instructor/cardList" component={CardsList} />
+      <ProtectedRoute exact path="/student/cardList" component={CardsList} />
 
-      {/* {roleId === 1 && <InstructorCards />} */}
-      {/* {roleId === 2 && <StudentCards />} */}
+      {/* {roleId === 1 && <InstructorCards />}
+      {roleId === 2 && <StudentCards />} */}
     </div>
   );
 }

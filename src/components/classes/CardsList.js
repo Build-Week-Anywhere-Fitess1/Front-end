@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import api from '../../utils/api';
+import api from "../../utils/api";
 
 //START Charlie
-import { fetchClasses } from '../../actions/classes';
-import ClassCard from './ClassCard';
+import { fetchClasses } from "../../actions/classes";
+import ClassCard from "./ClassCard";
 //END Charlie
 
 const CardsList = props => {
-
-  const [userClasses, setUserClasses] = useState([])
+  const [userClasses, setUserClasses] = useState([]);
 
   useEffect(() => {
-    api().get(`/api/user/classes`)
+    api()
+      .get(`/api/user/classes`)
       .then(res => {
-        setUserClasses(res.data)
+        console.log(res.data);
+        setUserClasses(res.data);
       })
-      .catch(err => console.log(err))
-  }, [])
+      .catch(err => console.log(err));
+  }, []);
 
   // console.log(userClasses, 'after fetch')
 
@@ -26,13 +27,12 @@ const CardsList = props => {
       <div>
         <h1>Your Classes</h1>
 
-        <h1>Dashboard - Card List</h1>
+        {/* <h1>Dashboard - Card List</h1> */}
 
-        <div style={{display:'flex', flexDirection:'row', }}>
-          
+        <div style={{ display: "flex", flexDirection: "row" }}>
           {userClasses.map((item, index) => (
-                      <ClassCard key={index} class_details={item}/>
-                  ))}
+            <ClassCard key={index} class_details={item} />
+          ))}
         </div>
       </div>
     </>

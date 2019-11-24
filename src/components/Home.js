@@ -52,6 +52,7 @@ const Home = props => {
 
   return (
     <>
+      <h1>ANYTIME FITNESS</h1>
       <h1>Workout the Way YOU Want to</h1>
 
       <h3>The Most Amazing Workout Platform in the World</h3>

@@ -10,9 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DashNavBar from "./DashNavBar";
+import CardsList from "../classes/CardsList";
 import "./InstrDashStylz.css";
 
-function DashMain() {
+function InstrDash() {
   return (
     // Set CSS grid container
     <div className="grid-container">
@@ -92,7 +93,9 @@ function DashMain() {
         {/* styling for main cards */}
         {/* Render class card components HERE */}
 
-        <div className="main-overview">
+        <CardsList />
+
+        {/* <div className="main-overview">
           <div className="overviewcard">
             <div className="overviewcard_icon">Overview</div>
             <div className="overviewcard_info">Card</div>
@@ -109,7 +112,7 @@ function DashMain() {
             <div className="overviewcard_icon">Overview</div>
             <div className="overviewcard_info">Card</div>
           </div>
-        </div>
+        </div> */}
 
         <div className="main-cards">
           <div className="card">Card 1</div>
@@ -127,4 +130,4 @@ function DashMain() {
   );
 }
 
-export default DashMain;
+export default InstrDash;

@@ -11,27 +11,17 @@ function NavBar() {
         <ul className="navbar">
           <li>
             <NavLink exact to="/" activeClassName="activeNavButton">
-              Sign IN
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/" activeClassName="activeNavButton">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/instructor/:id" activeClassName="activeNavButton">
+            <NavLink to="/instructor/" activeClassName="activeNavButton">
               Sensei
             </NavLink>
           </li>
           <li>
-            <NavLink to="/student/:id" activeClassName="activeNavButton">
+            <NavLink to="/student/" activeClassName="activeNavButton">
               Grasshopper
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" activeClassName="activeNavButton">
-              Sign UP
             </NavLink>
           </li>
           <SearchBar />
