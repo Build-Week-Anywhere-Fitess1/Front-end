@@ -37,6 +37,8 @@ function ClassCard(props) {
           title="Cross Fit"
         />
         <CardContent>
+          {console.log(props)}
+          <h3>{props.class_details.classId}</h3>
           <Typography gutterBottom variant="h5" component="h2">
             {props.class_details.name}
           </Typography>

@@ -14,7 +14,7 @@ const CardsList = props => {
     api()
       .get(`/api/user/classes`)
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         setUserClasses(res.data);
       })
       .catch(err => console.log(err));
