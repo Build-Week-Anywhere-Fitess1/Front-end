@@ -10,9 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DashNavBar from "./DashNavBar";
-import CardsList from "../classes/CardsList";
+import CardsList from "../instructor/ClassList";
 import "./StuDashStylz.css";
 import BreadCrumbsList from "../student/BreadCrumbsList";
+
 
 function StuDash() {
   return (
@@ -42,7 +43,7 @@ function StuDash() {
           <div className="sidenav__profile-avatar">
             {<FontAwesomeIcon icon={faUser} />}
           </div>
-          <div className="sidenav__profile-title text-light">User Name</div>
+          <div className="sidenav__profile-title text-light">{localStorage.getItem("username")}</div>
         </div>
 
         <div className="row row--align-v-center row--align-h-center">
@@ -82,7 +83,7 @@ function StuDash() {
           <div className="main-header__intro-wrapper">
             <div className="main-header__welcome">
               <div className="main-header__welcome-title text-light">
-                Welcome, <strong>User</strong>
+                Welcome, <strong>{localStorage.getItem("username")}</strong>
               </div>
               <div className="main-header__welcome-subtitle text-light">
                 Where are you working out today?
@@ -93,8 +94,6 @@ function StuDash() {
 
         {/* styling for main cards */}
         {/* Render class card components HERE */}
-
-        <CardsList />
 
         <BreadCrumbsList />
       </main>

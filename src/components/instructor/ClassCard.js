@@ -37,22 +37,24 @@ function ClassCard(props) {
           title="Cross Fit"
         />
         <CardContent>
-          {console.log(props)}
-          <h3>{props.class_details.classId}</h3>
+          
+          {console.log(props.class_details, 'card-details')}
+
+          <h3>{props.class_details.title}</h3>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.class_details.name}
+            {props.class_details.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.class_details.description}
+            {props.class_details.scheduleTime ? props.class_details.scheduleTime : 'null'}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Edit
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Delete
         </Button>
       </CardActions>
     </Card>

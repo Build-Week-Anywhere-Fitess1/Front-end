@@ -30,6 +30,7 @@ const Signin = props => {
 
     setIsLoading(true);
 
+
     api()
       .post("/api/auth/login", data)
       .then(
@@ -46,18 +47,26 @@ const Signin = props => {
             //Set Username in Local Storage
             localStorage.setItem("username", res.data.user.username);
 
+            //Set InstructorID in Local Storage
+            localStorage.setItem("studentID", res.data.user.id);
+
             console.log(
               localStorage.getItem("username"),
               "Get Storage Username"
             );
 
             props.history.push("/student");
+
           } else if (res.data.user.roleId == 1) {
+            
             //Set Token in Local Storage
             localStorage.setItem("token", res.data.token);
 
             //Set Username in Local Storage
             localStorage.setItem("username", res.data.user.username);
+
+            //Set InstructorID in Local Storage
+            localStorage.setItem("instructorID", res.data.user.id);
 
             console.log(
               localStorage.getItem("username"),

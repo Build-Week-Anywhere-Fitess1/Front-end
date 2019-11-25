@@ -53,7 +53,7 @@ const Home = props => {
   return (
     <>
       <h1>ANYTIME FITNESS</h1>
-      <h1>Workout the Way YOU Want to</h1>
+      <h1>Fitness The  Way YOU Want It!</h1>
 
       <h3>The Most Amazing Workout Platform in the World</h3>
 
@@ -82,15 +82,6 @@ const Home = props => {
           </RadioGroup>
         </FormControl>
 
-        {/* <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Sign In As:</FormLabel>
-            <RadioGroup aria-label="User Type" name="userType" value={userType} onChange={handleChange}>
-                <FormControlLabel value="grasshopper" control={<Radio />} label="Grasshopper" />
-                <FormControlLabel value="sensei" control={<Radio />} label="Sensei" />
-            </RadioGroup>
-        </FormControl> */}
-
-        {/* <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick()}>Login/Register</Button> */}
       </div>
 
       {visitType === "signup" && (

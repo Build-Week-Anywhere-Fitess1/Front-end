@@ -75,7 +75,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Signin() {
+export default function Signin(props) {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -116,6 +116,19 @@ export default function Signin() {
       .post(`/api/auth/register`, user)
       .then(res => {
         console.log("Success!", res);
+
+        //Set Username in Local Storage
+        localStorage.setItem("username", res.data.username);
+
+        if(user.roleId === 1){
+
+          props.history.push('/instructor')
+        
+        } else if (user.roleId === 2) {
+
+          props.history.push('/student')
+
+        }
       })
       .catch(err => {
         console.log(err);
