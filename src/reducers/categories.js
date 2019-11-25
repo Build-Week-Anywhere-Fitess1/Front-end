@@ -1,15 +1,15 @@
 import {
-    FETCH_CLASSES_START,
-    FETCH_CLASSES_SUCCESS,
-    FETCH_CLASSES_ERROR,
-    POST_CLASSES_START,
-    POST_CLASSES_POST,
-    POST_CLASSES_SUCCESS,
-    POST_CLASSES_ERROR
-} from "../actions/classes";
+    FETCH_CATEGORIES_START,
+    FETCH_CATEGORIES_SUCCESS,
+    FETCH_CATEGORIES_ERROR,
+    POST_CATEGORIES_START,
+    POST_CATEGORIES_POST,
+    POST_CATEGORIES_SUCCESS,
+    POST_CATEGORIES_ERROR
+} from "../actions/categories";
 
 const initialState = {
-    classes: [],
+    categories: [],
     isLoading: false,
     error: null
 }
@@ -18,7 +18,7 @@ export function reducer(state = initialState, action) {
     
     switch(action.type) {
 
-        case FETCH_CLASSES_START:
+        case FETCH_CATEGORIES_START:
 
             return {
                 ...state,
@@ -26,16 +26,16 @@ export function reducer(state = initialState, action) {
                 error: null
             }
 
-        case FETCH_CLASSES_SUCCESS:
+        case FETCH_CATEGORIES_SUCCESS:
 
             return {
                 ...state,
-                classes: [action.payload],
+                categories: [action.payload.data],
                 isLoading: false,
                 error: null
             }
 
-        case FETCH_CLASSES_ERROR:
+        case FETCH_CATEGORIES_ERROR:
 
             return {
                 ...state,
@@ -43,7 +43,7 @@ export function reducer(state = initialState, action) {
                 error: action.payload
             }
         
-        case POST_CLASSES_START:
+        case POST_CATEGORIES_START:
 
             return {
                 ...state,
@@ -51,7 +51,7 @@ export function reducer(state = initialState, action) {
                 error: null
             }
         
-        case POST_CLASSES_SUCCESS:
+        case POST_CATEGORIES_SUCCESS:
 
             return {
                 ...state,
@@ -60,7 +60,7 @@ export function reducer(state = initialState, action) {
                 error: null
             }
 
-        case POST_CLASSES_ERROR:
+        case POST_CATEGORIES_ERROR:
 
             return {
                 ...state,

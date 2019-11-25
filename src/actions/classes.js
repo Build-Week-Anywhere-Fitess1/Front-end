@@ -17,8 +17,10 @@ export function fetchClasses() {
 
         api().get(`/api/classes`)
             .then(res => {
-                console.log("Success!", res)
-                dispatch({type: FETCH_CLASSES_SUCCESS, payload: res})
+
+                console.log("Fetch Classes Success!", res)
+                
+                dispatch({type: FETCH_CLASSES_SUCCESS, payload: res.data})
             })
             .catch(err => {
                 console.log(err, "my error")
@@ -32,9 +34,11 @@ export function postClass(newClass) {
         
         dispatch({type: POST_CLASSES_START})
 
-        api().post(`/api/category`, newClass)
+        api().post(`/api/classes`, newClass)
             .then(res => {
-                console.log(res)
+
+                console.log("Post new Class Success!", res)
+
                 dispatch({type: POST_CLASSES_SUCCESS, payload: res})
             })
             .catch(err => {

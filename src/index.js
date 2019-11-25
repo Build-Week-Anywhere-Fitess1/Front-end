@@ -7,11 +7,15 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 // import { reducer as studentReducer } from './reducers/student';
 import { reducer as classesReducer } from "./reducers/classes";
+
+import { reducer as categoriesReducer } from "./reducers/categories";
+
 import App from "./App";
 
 const rootReducer = combineReducers({
   // student: studentReducer,
-  classes: classesReducer
+  classes: classesReducer,
+  categories: categoriesReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

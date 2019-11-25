@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { connect } from  "react-redux";
 import api from "../../utils/api";
 
 //START Charlie
@@ -8,19 +8,8 @@ import ClassCard from "./ClassCard";
 //END Charlie
 
 const CardsList = props => {
-  const [userClasses, setUserClasses] = useState([]);
-
-  useEffect(() => {
-    api()
-      .get(`/api/user/classes`)
-      .then(res => {
-        console.log(res.data);
-        setUserClasses(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  // console.log(userClasses, 'after fetch')
+  
+  console.log(props.class_item[0], 'ClassList')
 
   return (
     <>
@@ -30,7 +19,7 @@ const CardsList = props => {
         {/* <h1>Dashboard - Card List</h1> */}
 
         <div style={{ display: "flex", flexDirection: "row" }}>
-          {userClasses.map((item, index) => (
+          {props.class_item.map((item, index) => (
             <ClassCard key={index} class_details={item} />
           ))}
         </div>
@@ -38,5 +27,16 @@ const CardsList = props => {
     </>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+    
+//     classes: state.classes
+
+//   };
+// };
+
+
+// export default connect(mapStateToProps)(CardsList);
 
 export default CardsList;
