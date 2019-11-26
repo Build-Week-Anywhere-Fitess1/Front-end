@@ -11,6 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import api from "../../utils/api";
 
 const useStyles = makeStyles({
   card: {
@@ -24,9 +25,8 @@ const useStyles = makeStyles({
 function ClassCard(props) {
 
   const classes = useStyles();
-
   
-  // console.log(item);
+  console.log(props);
 
   return (
     
@@ -42,16 +42,16 @@ function ClassCard(props) {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {props.class_details.name}
+              {props.class_details.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.class_details.description}
+              {props.class_details.scheduleTime}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
+          <Button size="small" color="primary" onClick={() => props.handleDelete(props.class_details.classId)}>
+            Delete
           </Button>
           <Button size="small" color="primary">
             Learn More

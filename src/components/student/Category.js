@@ -18,7 +18,7 @@ export default function Category(props) {
 
     return (
         <div>
-            <Link className={classes.category} to={`/${props.category.name}`}>{props.category.name}</Link>
+            <Link className={classes.category} to={`/student/${props.categories.name}`}>{props.categories.name}</Link>
         </div>
     )
 }
