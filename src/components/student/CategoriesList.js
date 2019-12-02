@@ -5,24 +5,12 @@ import Category from './Category';
 import ClassesList from './ClassesList';
 
 
-export default function CategoriesList() {
-    const [category, setCategory] = useState([])
-
-    useEffect(() => {
-        api().get(`/api/category`)
-            .then(res => {
-                setCategory(res.data)
-                // console.log(res.data)
-            })
-            .catch(err => console.log(err))
-    },[])
-
+export default function CategoriesList(props) {
     return (
         <>
-            {category.map(category => (
+            {props.categories.map(category => (
                 <div key={category.id}>
-                    <Category category={category} />
-                    <Route path={`/${category.name}`} component={ClassesList} />
+                    <Category categories={category} />
                 </div>
             ))}
         </>
