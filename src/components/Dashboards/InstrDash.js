@@ -153,13 +153,17 @@ function InstrDash(props) {
 
         {/* styling for main cards */}
 
-        <ClassList class_item={props.classes.classes} />
-        
+        <div style={{marginBottom:'50px'}}>
+          
+          <ClassList  />
+          
+        </div>
+
         {/*Add a class button here*/}
         {!addClass ?
         
           <AddClassContext.Provider value={{addClass, setAddClass}}>
-            <AddClassButton />
+            <AddClassButton  />
           </AddClassContext.Provider>
         
         :
@@ -169,7 +173,7 @@ function InstrDash(props) {
 
               <div style={{display:'flex', justifyContent:'center'}}>
 
-                {props.categories.categories[0].map( (category, index) => (
+                {props.categories.categories.map( (category, index) => (
                     
                       <Category key={index} category={category} setCategory={setCategory} />
                     

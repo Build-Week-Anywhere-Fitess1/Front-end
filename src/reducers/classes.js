@@ -3,9 +3,14 @@ import {
     FETCH_CLASSES_SUCCESS,
     FETCH_CLASSES_ERROR,
     POST_CLASSES_START,
-    POST_CLASSES_POST,
     POST_CLASSES_SUCCESS,
-    POST_CLASSES_ERROR
+    POST_CLASSES_ERROR,
+    EDIT_CLASSES_START,
+    EDIT_CLASSES_SUCCESS,
+    EDIT_CLASSES_ERROR,
+    DELETE_CLASSES_START,
+    DELETE_CLASSES_SUCCESS,
+    DELETE_CLASSES_ERROR
 } from "../actions/classes";
 
 const initialState = {
@@ -30,7 +35,7 @@ export function reducer(state = initialState, action) {
 
             return {
                 ...state,
-                classes: [action.payload],
+                classes: action.payload,
                 isLoading: false,
                 error: null
             }
