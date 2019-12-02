@@ -50,7 +50,7 @@ function ClassCard(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" onClick={() => props.handleDelete(props.class_details.classId)}>
+          <Button size="small" color="primary" onClick={props.handleDelete}>
             Delete
           </Button>
           <Button size="small" color="primary">

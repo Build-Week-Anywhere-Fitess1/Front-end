@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   }
 })
 
-function DashMain() {
+function StuDash() {
   const classes = useStyles();
   const [category, setCategory] = useState([])
 
@@ -65,7 +65,7 @@ function DashMain() {
           <div className="sidenav__profile-avatar">
             {<FontAwesomeIcon icon={faUser} />}
           </div>
-          <div className="sidenav__profile-title text-light">User Name</div>
+          <div className="sidenav__profile-title text-light">{localStorage.getItem("username")}</div>
         </div>
 
         <div className="row row--align-v-center row--align-h-center">
@@ -105,7 +105,7 @@ function DashMain() {
           <div className="main-header__intro-wrapper">
             <div className="main-header__welcome">
               <div className="main-header__welcome-title text-light">
-                Welcome, <strong>User</strong>
+                Welcome, <strong>{localStorage.getItem("username")}</strong>
               </div>
               <div className="main-header__welcome-subtitle text-light">
                 Where are you working out today?
@@ -136,4 +136,4 @@ function DashMain() {
   );
 }
 
-export default DashMain;
+export default StuDash;

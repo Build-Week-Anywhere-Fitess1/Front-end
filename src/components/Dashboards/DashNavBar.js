@@ -26,12 +26,12 @@ function DashNavBar() {
             </NavLink>
           </li> */}
           <li>
-            <NavLink to="/classes" activeClassName="activeNavButton">
+            <NavLink to="/instructor/classes" activeClassName="activeNavButton">
               Classes
             </NavLink>
           </li>
           <li>
-            <NavLink to="/logOff" activeClassName="activeNavButton">
+            <NavLink exact to="/" activeClassName="activeNavButton">
               Log Out
             </NavLink>
           </li>

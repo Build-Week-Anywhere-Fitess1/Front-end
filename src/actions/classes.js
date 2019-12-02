@@ -4,7 +4,6 @@ export const FETCH_CLASSES_START = "FETCH_CLASSES_START";
 export const FETCH_CLASSES_SUCCESS = "FETCH_CLASSES_SUCCESS";
 export const FETCH_CLASSES_ERROR = "FETCH_CLASSES_ERROR";
 export const POST_CLASSES_START = "POST_CLASSES_START";
-export const POST_CLASSES_POST = "POST_CLASSES_POST";
 export const POST_CLASSES_SUCCESS = "POST_CLASSES_SUCCESS";
 export const POST_CLASSES_ERROR = "POST_CLASSES_ERROR";
 
@@ -17,8 +16,10 @@ export function fetchClasses() {
 
         api().get(`/api/classes`)
             .then(res => {
-                console.log("Success!", res)
-                dispatch({type: FETCH_CLASSES_SUCCESS, payload: res})
+
+                console.log("Fetch Classes Success!", res)
+                
+                dispatch({type: FETCH_CLASSES_SUCCESS, payload: res.data})
             })
             .catch(err => {
                 console.log(err, "my error")
@@ -32,9 +33,11 @@ export function postClass(newClass) {
         
         dispatch({type: POST_CLASSES_START})
 
-        api().post(`/api/category`, newClass)
+        api().post(`/api/classes`, newClass)
             .then(res => {
-                console.log(res)
+
+                console.log("Post new Class Success!", res)
+
                 dispatch({type: POST_CLASSES_SUCCESS, payload: res})
             })
             .catch(err => {

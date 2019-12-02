@@ -1,74 +1,66 @@
 import {
-    FETCH_CLASSES_START,
-    FETCH_CLASSES_SUCCESS,
-    FETCH_CLASSES_ERROR,
-    POST_CLASSES_START,
-    POST_CLASSES_SUCCESS,
-    POST_CLASSES_ERROR
-} from "../actions/classes";
+    STUDENT_CLASS_START,
+    STUDENT_CLASS_SUCCESS,
+    STUDENT_CLASS_ERROR,
+    DELETE_STUDENT_CLASS_START,
+    DELETE_STUDENT_CLASS_SUCCESS,
+    DELETE_STUDENT_CLASS_ERROR
+}  from '../actions/studentClasses';
 
 const initialState = {
-    classes: [],
+    studentClasses: [],
     isLoading: false,
     error: null
 }
 
 export function reducer(state = initialState, action) {
-    
     switch(action.type) {
-
-        case FETCH_CLASSES_START:
-
-            return {
-                ...state,
-                isLoading: true,
-                error: null
-            }
-
-        case FETCH_CLASSES_SUCCESS:
-
-            return {
-                ...state,
-                classes: [action.payload],
-                isLoading: false,
-                error: null
-            }
-
-        case FETCH_CLASSES_ERROR:
-
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            }
-        
-        case POST_CLASSES_START:
-
+        case STUDENT_CLASS_START:
             return {
                 ...state,
                 isLoading: true,
                 error: null
             }
         
-        case POST_CLASSES_SUCCESS:
-
+        case STUDENT_CLASS_SUCCESS:
             return {
                 ...state,
-                classes: [...state.classes, action.payload],
+                studentClasses: action.payload,
                 isLoading: false,
                 error: null
             }
-
-        case POST_CLASSES_ERROR:
-
+        
+        case STUDENT_CLASS_ERROR:
             return {
                 ...state,
                 isLoading: false,
                 error: action.payload
             }
+        
+        case DELETE_STUDENT_CLASS_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: null
+            }
 
+        case DELETE_STUDENT_CLASS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                studentClasses: [state.studentClasses.filter((studentClass) => (
+                    studentClass.classId !== action.payload
+                ))]
+            }
+
+        case DELETE_STUDENT_CLASS_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        
         default:
-
             return state;
     }
 }

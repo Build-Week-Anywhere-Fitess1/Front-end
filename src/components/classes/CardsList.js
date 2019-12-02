@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import api from '../../utils/api';
 
+import { fetchStudentClasses, deleteStudentClasses } from '../../actions/studentClasses';
+
 //START Charlie
-import { fetchClasses } from '../../actions/classes';
 import ClassCard from './ClassCard';
 //END Charlie
 
 const CardsList = props => {
 
   const [userClasses, setUserClasses] = useState([])
-
+  
   useEffect(() => {
     // gets all of the classes the user is signed up for
-    api().get(`/api/user/classes`)
-      .then(res => {
-        setUserClasses(res.data)
-      })
-      .catch(err => console.log(err))
+    props.fetchStudentClasses();
   }, [])
-
+  
   const handleDelete = (id) => {
-    api().delete(`/api/user/classes/${id}`)
-      .then(res => {
-        console.log(res)
-        setUserClasses(userClasses.filter(singleClass => (
-          singleClass.id !== id
-        )))
-      })
-      .catch(err => console.log(err.response))
+    console.log(id, "id")
+    props.deleteStudentClasses(id)
   }
 
-  // console.log(userClasses, 'after fetch')
+  console.log('the user classes', props.studentClasses)
 
   return (
     <>
@@ -40,8 +31,8 @@ const CardsList = props => {
 
         <div style={{display:'flex', flexDirection:'row', }}>
           
-          {userClasses.map((item, index) => (
-              <ClassCard key={index} class_details={item} handleDelete={handleDelete}/>
+          {props.studentClasses.map((item, index) => (
+              <ClassCard key={index} class_details={item} handleDelete={() => handleDelete(item.classId)}/>
           ))}
         </div>
       </div>
@@ -49,4 +40,15 @@ const CardsList = props => {
   );
 };
 
-export default CardsList;
+const mapStateToProps = state => {
+  return {
+    studentClasses: state.studentClasses.studentClasses
+  }
+}
+
+const mapDispatchToProps = {
+  fetchStudentClasses,
+  deleteStudentClasses
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsList);

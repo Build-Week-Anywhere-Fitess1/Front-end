@@ -1,18 +1,80 @@
-import React from "react";
+
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from  "react-redux";
+
+
+//-->START Redux Action File Import
+import { fetchCategories } from '../../actions/categories';
+import { fetchClasses } from '../../actions/classes';
+//<--END Redux Action File Import
+
+
+//-->START FontAwesome Import
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDumbbell,
   faUser,
   faEnvelope,
   faEye,
-  faBookOpen
+  faBookOpen,
+  faPlusSquare
 } from "@fortawesome/free-solid-svg-icons";
+//<--END FontAwesome Import
 
+
+//-->START Components Import
 import DashNavBar from "./DashNavBar";
-import "./InstrDashStylz.css";
+import ClassList from '../instructor/ClassList';
+import AddClassButton from '../instructor/AddClassButton';
+import Category from '../instructor/Category';
+//<--END FontAwesom Import
 
-function DashMain() {
+
+//-->START Context API to Manage ADDCLASS
+import { AddClassContext } from '../../contexts/AddClassContext';
+import { AddCategoryContext } from '../../contexts/AddCategoryContext';
+//<--END Context API
+
+
+//-->START CSS Import
+import "./InstrDashStylz.css";
+import AddClassForm from "../instructor/AddClassForm";
+//<-END CSS Import
+
+
+
+function InstrDash(props) {
+
+  //State to handle Add Class Button & Category Initial Mapping
+  const [addClass, setAddClass] = useState(false)
+
+ 
+  const [category, setCategory] = useState({
+    id:'',
+    name:''
+  })
+
+  //-->START useContext to consume Category state from child component Category.js
+  // const { category } = useContext(AddCategoryContext);
+  //<--END useContext
+
+
+  //-->START Fetch Categories via Redux and Sets its state
+  useEffect(() => {
+    
+    props.fetchCategories()
+
+    props.fetchClasses()
+
+  }, []);
+  //<--END Fetch Categories
+
+
+  console.log(props.categories, 'Instr-Dash-Categories')
+
+  console.log(props.classes, 'Instr-Dash-Classes')
+
   return (
     // Set CSS grid container
     <div className="grid-container">
@@ -40,7 +102,7 @@ function DashMain() {
           <div className="sidenav__profile-avatar">
             {<FontAwesomeIcon icon={faUser} />}
           </div>
-          <div className="sidenav__profile-title text-light">User Name</div>
+          <div className="sidenav__profile-title text-light">{localStorage.getItem("username")}</div>
         </div>
 
         <div className="row row--align-v-center row--align-h-center">
@@ -80,41 +142,70 @@ function DashMain() {
           <div className="main-header__intro-wrapper">
             <div className="main-header__welcome">
               <div className="main-header__welcome-title text-light">
-                Welcome, <strong>User</strong>
+                Welcome, <strong>{localStorage.getItem("username")}</strong>
               </div>
               <div className="main-header__welcome-subtitle text-light">
-                Where are you working out today?
+                Ready for your class today?
               </div>
             </div>
           </div>
         </div>
 
         {/* styling for main cards */}
+
+        <ClassList class_item={props.classes.classes} />
+        
+        {/*Add a class button here*/}
+        {!addClass ?
+        
+          <AddClassContext.Provider value={{addClass, setAddClass}}>
+            <AddClassButton />
+          </AddClassContext.Provider>
+        
+        :
+
+          <div>
+              <h1>Select The Category For Your New Class </h1>
+
+              <div style={{display:'flex', justifyContent:'center'}}>
+
+                {props.categories.categories[0].map( (category, index) => (
+                    
+                      <Category key={index} category={category} setCategory={setCategory} />
+                    
+                ))}
+
+              </div>
+          </div>
+      
+        }
+
+        
+        {/*Display Class List According to Category*/}
+        {category.id != '' ?
+        
+          <div>
+            <h2 style={{color:'red', marginBottom:'50px'}}>{category.name}</h2>
+
+            <AddClassForm style={{marginBottom:'50px'}} category={category} />
+          </div>
+
+        :
+
+          <h3></h3>
+        }
+
+        
+
         {/* Render class card components HERE */}
-
-        <div className="main-overview">
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard_icon">Overview</div>
-            <div className="overviewcard_info">Card</div>
-          </div>
-        </div>
-
-        <div className="main-cards">
-          <div className="card">Card 1</div>
-          <div className="card">Card 2</div>
-          <div className="card">Card 3</div>
+        
+        
+        
+        
+        <div className="main-cards"  style={{marginTop:'75px'}}  >
+          <div className="card">Social Feed</div>
+          <div className="card">Event Notification Card</div>
+          <div className="card">Suggested Classes</div>
         </div>
       </main>
 
@@ -127,4 +218,22 @@ function DashMain() {
   );
 }
 
-export default DashMain;
+const mapStateToProps = state => {
+  return {
+    
+    categories: state.categories,
+    classes: state.classes
+
+  };
+};
+
+const mapDispatchToProps = {
+  
+  fetchCategories,
+  fetchClasses
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InstrDash);
+
+
