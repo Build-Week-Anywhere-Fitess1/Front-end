@@ -3,13 +3,13 @@ import { connect } from  "react-redux";
 import api from "../../utils/api";
 
 //START Charlie
-import { fetchClasses } from "../../actions/classes";
+import { editClass } from "../../actions/classes";
 import ClassCard from "./ClassCard";
 //END Charlie
 
 const CardsList = props => {
   
-  console.log(props.class_item[0], 'ClassList')
+  // console.log(props.class_item[0], 'ClassList')
 
   return (
     <>
@@ -19,8 +19,12 @@ const CardsList = props => {
         {/* <h1>Dashboard - Card List</h1> */}
 
         <div style={{ display: "flex", flexDirection: "row" }}>
-          {props.class_item.map((item, index) => (
-            <ClassCard key={index} class_details={item} />
+          {props.class_details.map((item, index) => (
+            <ClassCard 
+              key={index} 
+              class_details={item}
+              editClass={props.editClass} 
+            />
           ))}
         </div>
       </div>
@@ -28,15 +32,21 @@ const CardsList = props => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
+const mapStateToProps = state => {
+  return {
     
-//     classes: state.classes
+    class_details: state.classes.classes
 
-//   };
-// };
+  };
+};
+
+const mapDispatchToProps = {
+  
+  editClass
+
+};
 
 
-// export default connect(mapStateToProps)(CardsList);
+export default connect(mapStateToProps, mapDispatchToProps)(CardsList);
 
-export default CardsList;
+// export default CardsList;

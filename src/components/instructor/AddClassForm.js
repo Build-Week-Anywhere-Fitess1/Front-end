@@ -43,9 +43,10 @@ const AddClassForm = props => {
     setNewClassData({
       ...newClassData,
       [e.target.name]: e.target.value,
-      instructorId:parseInt(localStorage.getItem('instructorID'),10),
-      categoryId:parseInt(props.category.id, 10),
-      scheduleTime:Date.now()
+      // instructorId:parseInt(localStorage.getItem('instructorID'),10),
+      // categoryId:parseInt(props.category.id, 10)
+      instructorId:localStorage.getItem('instructorID'),
+      categoryId:props.category.id
     });
   };
 
@@ -58,18 +59,9 @@ const AddClassForm = props => {
 
     // console.log(newClassData)
 
-    api().post(`/api/classes`, newClassData)
-    .then(res => {
+   props.postClass(newClassData)
 
-        console.log("Post new Class Success!", res)
-
-        
-    })
-    .catch(err => {
-        console.log(err)
-        
-    })
-
+    
   };
     
 
@@ -137,7 +129,7 @@ const AddClassForm = props => {
             type="text"
             name="scheduleTime"
             placeholder="Time"
-            value={Date.now()}
+            value=''
             onChange={handleChange}
             disabled
           />

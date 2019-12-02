@@ -30,7 +30,7 @@ export function reducer(state = initialState, action) {
 
             return {
                 ...state,
-                categories: [action.payload.data],
+                categories: action.payload.data,
                 isLoading: false,
                 error: null
             }
