@@ -10,15 +10,14 @@ import ClassCard from './ClassCard';
 
 const CardsList = props => {
 
-  const [userClasses, setUserClasses] = useState([])
-  
   useEffect(() => {
     // gets all of the classes the user is signed up for
     props.fetchStudentClasses();
   }, [])
   
-  const handleDelete = (id) => {
+  const handleDelete = (id, e) => {
     console.log(id, "id")
+    e.preventDefault()
     props.deleteStudentClasses(id)
   }
 
@@ -32,7 +31,7 @@ const CardsList = props => {
         <div style={{display:'flex', flexDirection:'row', }}>
           
           {props.studentClasses.map((item, index) => (
-              <ClassCard key={index} class_details={item} handleDelete={() => handleDelete(item.classId)}/>
+              <ClassCard key={index} class_details={item} handleDelete={(e) => handleDelete(item.classId, e)}/>
           ))}
         </div>
       </div>
