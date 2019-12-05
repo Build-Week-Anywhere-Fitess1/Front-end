@@ -17,6 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 
 import TextField from '@material-ui/core/TextField';
+import { deleteClass } from "../../actions/classes";
 
 const useStyles = makeStyles({
   card: {
@@ -148,12 +149,6 @@ function ClassCard(props) {
     }, []);
   
 
-    const handleEdit = () => {
-      
-      
-    
-    }
-
     const handleSubmit = e =>{
 
       e.preventDefault()
@@ -163,7 +158,15 @@ function ClassCard(props) {
 
       //  window.location.reload()
 
+    }
 
+
+    const handleDelete = () => {
+      
+      props.deleteClass(props.class_details.id)
+
+      console.log('dafuq')
+    
     }
 
     
@@ -318,7 +321,7 @@ function ClassCard(props) {
           </Modal>
           {/*END MODAL*/}
 
-        <Button size="small" color="primary">
+        <Button onClick={handleDelete} size="small" color="primary">
           Delete
         </Button>
       </CardActions>

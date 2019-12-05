@@ -31,9 +31,12 @@ class AddClassForm extends React.Component {
       this.setState({
 
         ...this.state.newClass,
-        [e.target.name]: e.target.value,
-        instructorId: Number(localStorage.getItem('instructorID')),
-        categoryId: this.props.category.id
+        newClass:{
+          [e.target.name]: e.target.value,
+          instructorId: Number(localStorage.getItem('instructorID')),
+          categoryId: this.props.category.id
+        }
+        
         
       });
 

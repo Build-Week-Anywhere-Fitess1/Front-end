@@ -49,7 +49,7 @@ export const postClass = (newClass) => dispatch => {
 
                 console.log(newClass, "class")
 
-                dispatch({type: POST_CLASSES_SUCCESS, payload: newClass})
+                dispatch({type: POST_CLASSES_SUCCESS, payload: res})
             })
             .catch(err => {
                 
@@ -76,3 +76,24 @@ export function editClass(id, classObject) {
             })
     }
 }
+
+
+export function deleteClass(id) {
+    return dispatch => {
+        
+        dispatch({type: DELETE_CLASSES_START})
+
+        api().delete(`/api/classes/${id}`)
+            .then(res => {
+
+                
+
+                dispatch({type: DELETE_CLASSES_SUCCESS, payload: res})
+            })
+            .catch(err => {
+                
+                dispatch({type: EDIT_CLASSES_ERROR, payload: err})
+            })
+    }
+}
+
