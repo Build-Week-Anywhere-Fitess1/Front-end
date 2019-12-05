@@ -7,13 +7,13 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 // import { reducer as studentReducer } from './reducers/student';
 import { reducer as classesReducer } from "./reducers/classes";
-
+import { reducer as studentReducer } from "./reducers/studentClasses";
 import { reducer as categoriesReducer } from "./reducers/categories";
 
 import App from "./App";
 
 const rootReducer = combineReducers({
-  // student: studentReducer,
+  studentClasses: studentReducer,
   classes: classesReducer,
   categories: categoriesReducer
 });
