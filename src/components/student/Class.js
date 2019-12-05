@@ -44,7 +44,7 @@ function Class(props) {
         // signs the user up for the class based on ID
         api().post(`/api/user/classes/${props.classes.id}`)
             .then(res => {
-                console.log("Success!", res)
+                
                 window.alert("You have registered for this class!")
             })
             .catch(err => console.log(err.response))

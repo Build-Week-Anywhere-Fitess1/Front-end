@@ -4,6 +4,7 @@ import api from "../../utils/api";
 
 //START Charlie
 import { editClass } from "../../actions/classes";
+import { deleteClass } from "../../actions/classes";
 import ClassCard from "./ClassCard";
 //END Charlie
 
@@ -23,7 +24,8 @@ const CardsList = props => {
             <ClassCard 
               key={index} 
               class_details={item}
-              editClass={props.editClass} 
+              editClass={props.editClass}
+              deleteClass={props.deleteClass} 
             />
           ))}
         </div>
@@ -42,7 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   
-  editClass
+  editClass,
+  deleteClass
 
 };
 

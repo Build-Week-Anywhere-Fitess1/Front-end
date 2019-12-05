@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+
+import { render } from "react-dom";
 
 import { connect } from 'react-redux';
 
@@ -8,172 +10,177 @@ import api from "../../utils/api";
 import { postClass } from '../../actions/classes';
 //<--END Redux Action File Import
 
-import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles({
-    button: {
-        textDecoration: 'none',
-        color: 'black',
-        border: '2px solid #636363',
-        borderRadius: '5px',
-        padding: '10px 25px',
-        backgroundColor: '#AEEA4F'
+
+
+
+
+class AddClassForm extends React.Component {
+
+  constructor(){
+    super();
+    this.state = {
+      newClass:{
+        title:'',
+        address:''
+      }
     }
-})
+  }
 
+    handleChange = e => {
+      this.setState({
 
-const AddClassForm = props => {
+        ...this.state.newClass,
+        newClass:{
+          [e.target.name]: e.target.value,
+          instructorId: Number(localStorage.getItem('instructorID')),
+          categoryId: this.props.category.id
+        }
+        
+        
+      });
 
-    const classes = useStyles();
+      console.log(this.state.newClass, 'onChange')
+
+    }
   
-    const [isLoading, setIsLoading] = useState(false);
+    handleSubmit = e => {
+      
+      e.preventDefault();
 
-    const [newClassData, setNewClassData] = useState({
-        title: '',
-        instructorId: '',
-        categoryId: '',
-        scheduleTime: '',
-        address: '',
-        city: '',
-        state: '',
-        zipCode: '',
-  });
+      console.log(this.state, 'onSubmit')
+     this.props.postClass(this.state.newClass)
+  
+      
+    };
 
-  const handleChange = e => {
-    setNewClassData({
-      ...newClassData,
-      [e.target.name]: e.target.value,
-      // instructorId:parseInt(localStorage.getItem('instructorID'),10),
-      // categoryId:parseInt(props.category.id, 10)
-      instructorId:localStorage.getItem('instructorID'),
-      categoryId:props.category.id
-    });
-  };
+  
+  
+  //   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = e => {
+  //   const [newClassData, setNewClassData] = useState({
+  //       // title: '',
+  //       // instructorId: Number(localStorage.getItem('instructorID')),
+  //       // categoryId: Number(props.category.id),
+  //       // scheduleTime: '',
+  //       // address: '',
+  //       // city: '',
+  //       // state: '',
+  //       // zipCode: ''
+  // });
+
+  
     
-    e.preventDefault();
-
-    setIsLoading(true);
-
-
-    // console.log(newClassData)
-
-   props.postClass(newClassData)
-
-    
-  };
-    
-
-
-  return (
-    <>
-      {isLoading && <div>Loading... </div>}
-
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "75px",
-          marginBottom: "25px",
-          height: "150px"
-        }}
-      >
-        <h3>Post New Class</h3>
-
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            background: "#82bef6",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around",
-            padding: "30px 0px",
-            width: "175px"
-          }}
-        >
-
-
-          <input
-            type="text"
-            name="title"
-            placeholder="Class Name"
-            value={newClassData.password}
-            onChange={handleChange}
-          />
-
-        <input
-            type="text"
-            name="instructorId"
+    render(){
+        return (
+          <>
             
-            value={localStorage.getItem('instructorID')}
-            onChange={handleChange}
-            disabled
-          />
-
-        <input
-            type="text"
-            name="categoryId"
-            
-            value={props.category.id}
-            onChange={handleChange}
-            disabled
-          />
-
-
-          <input
-            type="text"
-            name="scheduleTime"
-            placeholder="Time"
-            value=''
-            onChange={handleChange}
-            disabled
-          />
-
-        <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={newClassData.address}
-            onChange={handleChange}
-          />
-
-        <input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={newClassData.city}
-            onChange={handleChange}
-          />
-
-        <input
-            type="text"
-            name="state"
-            placeholder="State"
-            value={newClassData.state}
-            onChange={handleChange}
-          />
-
-        <input
-            type="text"
-            name="zipCode"
-            placeholder="Zip Code"
-            value={newClassData.zipCode}
-            onChange={handleChange}
-          />        
-          
-
-          <button style={{marginTop:"15px"}} className={classes.button} type="submit">Submit</button>
-        </form>
-      </div>
-    </>
-  );
-};
-
+      
+            <div
+              style={{
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "75px",
+                marginBottom: "25px",
+                height: "150px"
+              }}
+            >
+              <h3>Post New Class</h3>
+      
+              <form
+                onSubmit={this.handleSubmit}
+                style={{
+                  background: "#82bef6",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  padding: "30px 0px",
+                  width: "175px"
+                }}
+              >
+      
+      
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Class Name"
+                  value={this.state.newClass.title}
+                  onChange={this.handleChange}
+                />
+      
+              <input
+                  type="text"
+                  name="instructorId"
+                  
+                  value={Number(localStorage.getItem('instructorID'))}
+                  onChange={this.handleChange}
+                  disabled
+                />
+      
+              <input
+                  type="text"
+                  name="categoryId"
+                  
+                  value={Number(this.props.category.id)}
+                  onChange={this.handleChange}
+                  disabled
+                />
+      
+      
+                <input
+                  type="text"
+                  name="scheduleTime"
+                  placeholder="Time"
+                  value=''
+                  onChange={this.handleChange}
+                  disabled
+                />
+      
+              <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  value={this.props.address}
+                  onChange={this.handleChange}
+                />
+      
+              <input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  value={this.props.city}
+                  onChange={this.handleChange}
+                />
+      
+              <input
+                  type="text"
+                  name="state"
+                  placeholder="State"
+                  value={this.props.state}
+                  onChange={this.handleChange}
+                />
+      
+              <input
+                  type="text"
+                  name="zipCode"
+                  placeholder="Zip Code"
+                  value={this.props.zipCode}
+                  onChange={this.handleChange}
+                />        
+                
+      
+                <button style={{marginTop:"15px"}} >Submit</button>
+              </form>
+            </div>
+          </>
+        );
+      };
+    }
+  
 
 const mapStateToProps = state => {
     return {
@@ -184,12 +191,12 @@ const mapStateToProps = state => {
     };
   };
   
-  const mapDispatchToProps = {
+  // const mapDispatchToProps = {
     
-    postClass
+  //   postClass
   
-  };
+  // };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(AddClassForm);
+  export default connect(mapStateToProps,{postClass})(AddClassForm);
 
 

@@ -17,6 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 
 import TextField from '@material-ui/core/TextField';
+import { deleteClass } from "../../actions/classes";
 
 const useStyles = makeStyles({
   card: {
@@ -123,7 +124,7 @@ function ClassCard(props) {
       [e.target.name]: e.target.value
     });
 
-      console.log(newEditedClass[e.target.name], `${e.target.name} onChange`)
+      
   };
 
   //-->END Edited Form State to send to PUT API
@@ -148,12 +149,6 @@ function ClassCard(props) {
     }, []);
   
 
-    const handleEdit = () => {
-      
-      console.log(ids)
-    
-    }
-
     const handleSubmit = e =>{
 
       e.preventDefault()
@@ -161,16 +156,24 @@ function ClassCard(props) {
       // console.log(newEditedClass)
       props.editClass(classId, newEditedClass)
 
-      window.location.reload()
-
+      //  window.location.reload()
 
     }
 
-    console.log(newEditedClass, 'newEditedClass')
+
+    const handleDelete = () => {
+      
+      props.deleteClass(props.class_details.id)
+
+      console.log('dafuq')
+    
+    }
+
+    
 
     const cat = props.categories.categories.filter( category => {return category.id == props.class_details.categoryId})
 
-    console.log(cat, 'Category Filter')
+    
 
   return (
     <Card className={classes.card}>
@@ -184,12 +187,8 @@ function ClassCard(props) {
         />
         <CardContent>
           
-          {console.log(props.class_details, 'card-details')}
 
-          {console.log(props.categories.categories, 'classCard Categories')}
-
-
-          <h3>Category: {cat[0].name}</h3>
+          <h3>Category: {cat.name}</h3>
           <Typography gutterBottom variant="h5" component="h2">
             Class Name: {props.class_details.title}
           </Typography>
@@ -322,7 +321,7 @@ function ClassCard(props) {
           </Modal>
           {/*END MODAL*/}
 
-        <Button size="small" color="primary">
+        <Button onClick={handleDelete} size="small" color="primary">
           Delete
         </Button>
       </CardActions>

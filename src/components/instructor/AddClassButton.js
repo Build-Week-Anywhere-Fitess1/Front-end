@@ -27,15 +27,15 @@ export default function AddClassButton() {
             .then(res => {
                 
                 setAllClasses(res.data)
-                console.log(res.data)
+                
 
             })
             .catch(err => {
-                console.log(err)
+                
             })
     }, [])
     
-    console.log(addClass)
+    
 
     //Sets Add Class to True to Hide AddClass Button and render Class List
     const handleAddClass = () =>{
