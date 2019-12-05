@@ -18,7 +18,7 @@ function SearchBar(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(inputValue.query);
+    
     setInputValue({
       query: "",
       results: {},
@@ -30,7 +30,7 @@ function SearchBar(props) {
 
   return (
     <div className="container">
-      {console.log(inputValue)}
+      
       <form>
         <label className="search-label" htmlFor="search-input">
           <input

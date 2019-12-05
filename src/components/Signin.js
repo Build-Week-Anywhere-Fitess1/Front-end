@@ -35,11 +35,11 @@ const Signin = props => {
       .post("/api/auth/login", data)
       .then(
         res => {
-          console.log(res);
-          console.log(res.data.token, "Token Retrieved From Sign In Component");
+          
+          
 
           if (res.data.user.roleId == 2) {
-            console.log("Student");
+            
 
             //Set Token in Local Storage
             localStorage.setItem("token", res.data.token);
@@ -50,10 +50,7 @@ const Signin = props => {
             //Set InstructorID in Local Storage
             localStorage.setItem("studentID", res.data.user.id);
 
-            console.log(
-              localStorage.getItem("username"),
-              "Get Storage Username"
-            );
+            
 
             props.history.push("/student");
 
@@ -68,10 +65,6 @@ const Signin = props => {
             //Set InstructorID in Local Storage
             localStorage.setItem("instructorID", res.data.user.id);
 
-            console.log(
-              localStorage.getItem("username"),
-              "Get Storage Username"
-            );
 
             props.history.push("/instructor");
 

@@ -12,7 +12,7 @@ export default function CategoriesList() {
         api().get(`/api/category`)
             .then(res => {
                 setCategory(res.data)
-                // console.log(res.data)
+                
             })
             .catch(err => console.log(err))
     },[])

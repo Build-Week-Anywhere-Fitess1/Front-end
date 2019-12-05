@@ -115,7 +115,7 @@ export default function Signin(props) {
     api()
       .post(`/api/auth/register`, user)
       .then(res => {
-        console.log("Success!", res);
+        
 
         //Set Username in Local Storage
         localStorage.setItem("username", res.data.username);
@@ -131,7 +131,7 @@ export default function Signin(props) {
         }
       })
       .catch(err => {
-        console.log(err);
+        
       });
   };
 

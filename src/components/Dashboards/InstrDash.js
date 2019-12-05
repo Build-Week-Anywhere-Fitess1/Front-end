@@ -71,9 +71,7 @@ function InstrDash(props) {
   //<--END Fetch Categories
 
 
-  console.log(props.categories, 'Instr-Dash-Categories')
 
-  console.log(props.classes, 'Instr-Dash-Classes')
 
   return (
     // Set CSS grid container

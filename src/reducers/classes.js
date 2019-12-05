@@ -58,9 +58,11 @@ export function reducer(state = initialState, action) {
         
         case POST_CLASSES_SUCCESS:
 
+        console.log(action.payload, 'payload')
+
             return {
                 ...state,
-                classes: [...state.classes, action.payload],
+                classes: [...state, action.payload],
                 isLoading: false,
                 error: null
             }

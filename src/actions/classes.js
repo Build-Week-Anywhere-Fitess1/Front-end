@@ -20,42 +20,43 @@ export const DELETE_CLASSES_ERROR = "DELETE_CLASSES_ERROR";
 export function fetchClasses() {
     return dispatch => {
         
-        console.log('fetchClasses')
+        
 
         dispatch({type: FETCH_CLASSES_START})
 
         api().get(`/api/classes`)
             .then(res => {
 
-                console.log("Fetch Classes Success!", res)
+                
                 
                 dispatch({type: FETCH_CLASSES_SUCCESS, payload: res.data})
             })
             .catch(err => {
-                console.log(err, "my error")
+                
                 dispatch({type: FETCH_CLASSES_ERROR, payload: err.message})
             })
     }
 }
 
-export function postClass(newClass) {
-    return dispatch => {
+export const postClass = (newClass) => dispatch => {
+    
         
         dispatch({type: POST_CLASSES_START})
 
-        api().post(`/api/classes`, newClass)
+        
+        return api().post(`/api/classes`, newClass)
             .then(res => {
 
-                console.log("Post new Class Success!", res)
+                console.log(newClass, "class")
 
-                dispatch({type: POST_CLASSES_SUCCESS, payload: res})
+                dispatch({type: POST_CLASSES_SUCCESS, payload: newClass})
             })
             .catch(err => {
-                console.log(err)
+                
                 dispatch({type: POST_CLASSES_ERROR, payload: err})
             })
     }
-}
+
 
 export function editClass(id, classObject) {
     return dispatch => {
@@ -65,12 +66,12 @@ export function editClass(id, classObject) {
         api().put(`/api/classes/${id}`, classObject)
             .then(res => {
 
-                console.log("Edit Class Success!", res)
+                
 
                 dispatch({type: EDIT_CLASSES_SUCCESS, payload: res})
             })
             .catch(err => {
-                console.log(err)
+                
                 dispatch({type: EDIT_CLASSES_ERROR, payload: err})
             })
     }

@@ -43,7 +43,7 @@ function Class(props) {
 
         api().post(`/api/user/classes/${props.classes.id}`)
             .then(res => {
-                console.log("Success!", res)
+                
                 window.alert("You have registered for this class!")
             })
             .catch(err => console.log(err))

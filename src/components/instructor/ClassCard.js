@@ -123,7 +123,7 @@ function ClassCard(props) {
       [e.target.name]: e.target.value
     });
 
-      console.log(newEditedClass[e.target.name], `${e.target.name} onChange`)
+      
   };
 
   //-->END Edited Form State to send to PUT API
@@ -150,7 +150,7 @@ function ClassCard(props) {
 
     const handleEdit = () => {
       
-      console.log(ids)
+      
     
     }
 
@@ -161,16 +161,16 @@ function ClassCard(props) {
       // console.log(newEditedClass)
       props.editClass(classId, newEditedClass)
 
-      window.location.reload()
+      //  window.location.reload()
 
 
     }
 
-    console.log(newEditedClass, 'newEditedClass')
+    
 
     const cat = props.categories.categories.filter( category => {return category.id == props.class_details.categoryId})
 
-    console.log(cat, 'Category Filter')
+    
 
   return (
     <Card className={classes.card}>
@@ -184,12 +184,8 @@ function ClassCard(props) {
         />
         <CardContent>
           
-          {console.log(props.class_details, 'card-details')}
 
-          {console.log(props.categories.categories, 'classCard Categories')}
-
-
-          <h3>Category: {cat[0].name}</h3>
+          <h3>Category: {cat.name}</h3>
           <Typography gutterBottom variant="h5" component="h2">
             Class Name: {props.class_details.title}
           </Typography>
