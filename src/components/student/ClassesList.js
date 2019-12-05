@@ -6,6 +6,7 @@ export default function ClassesList(props) {
     const [userClasses, setUserClasses] = useState([])
 
     useEffect(() => {
+        // gets all of the classes
         api().get(`/api/classes`)
             .then(res => {
                 setUserClasses(res.data)

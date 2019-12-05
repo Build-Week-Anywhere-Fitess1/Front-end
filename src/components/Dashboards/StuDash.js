@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, NavLink } from "react-router-dom";
+import { makeStyles } from '@material-ui/core';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDumbbell,
@@ -8,14 +9,35 @@ import {
   faEye,
   faBookOpen
 } from "@fortawesome/free-solid-svg-icons";
-
+import api from '../../utils/api';
 import DashNavBar from "./DashNavBar";
-import CardsList from "../instructor/ClassList";
+import CardsList from '../classes/CardsList';
+import ClassesList from '../student/ClassesList';
 import "./StuDashStylz.css";
-import BreadCrumbsList from "../student/BreadCrumbsList";
+// import CategoriesList from '../student/CategoriesList';
+// import BreadCrumbsList from "../student/BreadCrumbsList";
 
+const useStyles = makeStyles({
+  classesContainer: {
+    display: 'flex',
+    justifyContent: 'space-evenly'
+  }
+})
 
 function StuDash() {
+  const classes = useStyles();
+  const [category, setCategory] = useState([])
+
+  useEffect(() => {
+    // gets all the categories
+    api().get(`/api/category`)
+        .then(res => {
+            setCategory(res.data)
+            // console.log(res.data)
+        })
+        .catch(err => console.log(err))
+},[])
+
   return (
     // Set CSS grid container
     <div className="grid-container">
@@ -95,7 +117,14 @@ function StuDash() {
         {/* styling for main cards */}
         {/* Render class card components HERE */}
 
-        <BreadCrumbsList />
+        <div className={classes.classesContainer}>
+          <CardsList />
+          <ClassesList />
+        </div>
+        {/* <CategoriesList categories={category}/> */}
+        {/* <BreadCrumbsList /> */}
+        {/* <Route exact path={`/student/${category.name}`} component={ClassesList} /> */}
+        
       </main>
 
       {/* styling for footer */}

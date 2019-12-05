@@ -5,7 +5,8 @@ import Category from './Category';
 import ClassesList from './ClassesList';
 
 
-export default function CategoriesList() {
+
+export default function CategoriesList(props) {
     const [category, setCategory] = useState([])
 
     useEffect(() => {
@@ -17,12 +18,12 @@ export default function CategoriesList() {
             .catch(err => console.log(err))
     },[])
 
+
     return (
         <>
-            {category.map(category => (
+            {props.categories.map(category => (
                 <div key={category.id}>
-                    <Category category={category} />
-                    <Route path={`/${category.name}`} component={ClassesList} />
+                    <Category categories={category} />
                 </div>
             ))}
         </>
