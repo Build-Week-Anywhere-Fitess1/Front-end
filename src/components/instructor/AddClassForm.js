@@ -50,6 +50,10 @@ class AddClassForm extends React.Component {
 
       console.log(this.state, 'onSubmit')
      this.props.postClass(this.state.newClass)
+
+     setTimeout(() => {
+      window.location.reload()
+    }, 1000);
   
       
     };

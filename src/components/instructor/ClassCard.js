@@ -156,7 +156,9 @@ function ClassCard(props) {
       // console.log(newEditedClass)
       props.editClass(classId, newEditedClass)
 
-      //  window.location.reload()
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
 
     }
 
@@ -165,7 +167,9 @@ function ClassCard(props) {
       
       props.deleteClass(props.class_details.id)
 
-      console.log('dafuq')
+      setTimeout(() => {
+        window.location.reload()
+      }, 1200);
     
     }
 
